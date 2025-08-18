@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 23:02:35 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/17 20:58:40 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/18 10:18:24 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,11 +68,12 @@ void	PhoneBook::searchContact()
 		std::cout << std::endl;
 	}
 	std::cout << "Key the index of the entry to display: ";
-	while (!(std::cin >> index) || index >= this->count)
+	if (!(std::cin >> index) || index >= this->count)
 	{
 		clearScreen();
 		std::cout << "Invalid input. Choose from the available indices." << std::endl;
 		std::cin.clear();
+		std::cin.ignore();
 		std::cout << std::endl << "Key the index of the entry to display: " << std::endl;
 		return (searchContact());
 	}

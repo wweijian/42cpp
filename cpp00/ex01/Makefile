@@ -6,35 +6,48 @@
 #    By: weijian <weijian@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/14 09:35:27 by weijian           #+#    #+#              #
-#    Updated: 2025/08/14 14:03:44 by weijian          ###   ########.fr        #
+#    Updated: 2025/08/18 10:18:07 by weijian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= phonebook
+NAME		= phonebook
 
-SRC		= main.cpp
-OBJ		= ${SRCS:%.cpp=%.o}
-INCL	= Contact.hpp PhoneBook.hpp
+# === INCLUDES === #
+INCL_DIR	= includes/
+HEADERS		= Contact.hpp PhoneBook.hpp
+INCL		= $(addprefix ${INCL_DIR},${HEADERS})
+
+# === SOURCE FILES === #
+SRCS_DIR	= srcs/
+SRCS		= main.cpp Contact.cpp PhoneBook.cpp
+SRCS		:= $(addprefix ${SRCS_DIR},${SRCS})
+
+# === OBJECTS === #
+OBJS_DIR	= objs/
+OBJS		:= $(SRCS:${SRCS_DIR}%.cpp=${OBJS_DIR}%.o)
+
 # === COMPILATION === #
+CC			= c++
+VER			= -std=c++98
+CFLAGS		= -Wall -Werror -Wextra -I${INCL_DIR} ${VER}
 
-CC = c++
-VER = -std=c++98
-CFLAGS = -Wall -Werror -Wextra ${VER}
-
-# === RULE === #
-
+# === RULES === #
 all: ${NAME}
 
-${NAME}: ${OBJ} ${INCL}
-	${CC} ${CFLAGS} ${OBJ} -o $@
+${NAME}: ${OBJS}
+	${CC} ${CFLAGS} ${OBJS} -o $@
 
-${OBJ}: %.o: %.cpp ${INCL}
+${OBJS_DIR}%.o: ${SRCS_DIR}%.cpp ${INCL} | ${OBJS_DIR}
 	${CC} ${CFLAGS} -c $< -o $@
 
-# === CLEANUP === #
+${OBJS_DIR}:
+	mkdir -p $@
 
+# === CLEANUP === #
 clean:
-	rm -f ${OBJ}
+	rm -f ${OBJS}
 
 fclean: clean
 	rm -f ${NAME}
+
+.PHONY: all clean fclean
