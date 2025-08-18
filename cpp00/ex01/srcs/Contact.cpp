@@ -3,36 +3,35 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 21:40:22 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/18 11:19:21 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/18 16:02:36 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
 
 // Constructors
+
 Contact::Contact()
-	: _firstName(setField(FIRST_NAME)), 
+	: _firstName(""),
+	_lastName(""),
+	_nickname(""),
+	_number(""),
+	_secret("") {}
+	
+Contact::Contact(int i)
+	: _firstName(setField(FIRST_NAME)),
 	_lastName(setField(LAST_NAME)),
 	_nickname(setField(NICKNAME)),
 	_number(setField(NUMBER)),
-	_secret(setField(SECRET)) {}
-
-Contact::Contact(std::string firstName,
-					std::string lastName,
-					std::string nickname,
-					std::string number,
-					std::string secret)
-	: _firstName(firstName), 
-	_lastName(lastName),
-	_nickname(nickname),
-	_number(number),
-	_secret(secret) {}
+	_secret(setField(SECRET)) {
+		(void) i;
+	}
 	
 Contact::Contact(const Contact &other)
-	: _firstName(other._firstName), 
+	: _firstName(other._firstName),
 	_lastName(other._lastName),
 	_nickname(other._nickname),
 	_number(other._number),
@@ -40,7 +39,11 @@ Contact::Contact(const Contact &other)
 
 Contact&	Contact::operator=(const Contact& other) {
 	if (this != &other) {
-		*this = Contact(other);
+		this->_firstName = other._firstName;
+		this->_lastName = other._lastName;
+		this->_nickname = other._nickname;
+		this->_number = other._number;
+		this->_secret = other._secret;
 	}
 	return (*this);
 }

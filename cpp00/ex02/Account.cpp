@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Account.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/18 11:13:35 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/18 13:22:03 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/18 16:27:25 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,7 +108,7 @@ void	Account::displayStatus() const
 void	Account::_displayTimestamp( void )
 {
 	struct tm	*dateTime;
-	std::time_t	rawTime = std::time(nullptr) ;
+	std::time_t	rawTime = std::time(&rawTime) ;
 
 	dateTime = std::localtime(&rawTime);
 	std::cout << '[' << dateTime->tm_year + 1900;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 13:49:53 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/17 20:47:56 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/18 16:10:24 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,7 @@
 class Contact {
 	public:
 		Contact	(void);
-		Contact(std::string firstName,
-				std::string lastName,
-				std::string nickname,
-				std::string number,
-				std::string secret);
+		Contact(int i);
 		Contact(const Contact& other);
 		Contact& operator=(const Contact& other);
 		
@@ -47,11 +43,11 @@ class Contact {
 		const std::string setField(Field field);
 
 		/* Variables */
-		const std::string	_firstName;
-		const std::string	_lastName;
-		const std::string	_nickname;
-		const std::string	_number;
-		const std::string	_secret;
+		std::string	_firstName;
+		std::string	_lastName;
+		std::string	_nickname;
+		std::string	_number;
+		std::string	_secret;
 
 		/* Utilities */
 		bool	isAllDigits(std::string str);

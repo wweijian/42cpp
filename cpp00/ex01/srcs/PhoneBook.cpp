@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 23:02:35 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/18 12:10:23 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/18 16:12:58 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 // Constructor
 PhoneBook::PhoneBook(void)
 {
-	for (int i = 7; i >= 0; i--)
-		this->_contact[i] = new Contact("", "", "", "", "");
 	_count = 0;
 }
 
@@ -31,9 +29,6 @@ std::string	PhoneBook::displayMenu(void)
 	std::cout << "EXIT: exit" << std::endl;
 	std::cout << std::endl;
 	std::cin  >> command;
-	for (int i = 0; command[i] != 0; i++) {
-		command[i] = toupper(command[i]);
-	}
 	return (command);
 }
 
@@ -43,18 +38,18 @@ void	PhoneBook::addContact(void)
 	std::cout << "Adding a new contact...\n" << std::endl;
 
 	for (int i = 7; i > 0; i--)
-		this->_contact[i] = this->_contact[i - 1];
-	this->_contact[0] = new Contact();
+		_contact[i] = _contact[i - 1];
+	_contact[0] = Contact(1);
 	if (_count < 8) _count++;
 	clearScreen();
-	std::cout << this->_contact[0]->getField(Contact::NICKNAME) << " has been added to your contacts\n" << std::endl;
+	std::cout << _contact[0].getField(Contact::NICKNAME) << " has been added to your contacts\n" << std::endl;
 }
 
 void	PhoneBook::searchContact()
 {
 	int	index;
 	
-	if (this->_count == 0)
+	if (_count == 0)
 	{
 		clearScreen();
 		std::cout << "No contacts to display\n" << std::endl;
@@ -68,13 +63,13 @@ void	PhoneBook::searchContact()
 	for (int i = 0; i < this->_count; i++)
 	{
 		std::cout << std::setw(10) << i << "|";
-		std::cout << std::setw(10) << this->_contact[i]->getField(Contact::FIRST_NAME) << "|";
-		std::cout << std::setw(10) << this->_contact[i]->getField(Contact::LAST_NAME) << "|";
-		std::cout << std::setw(10) << this->_contact[i]->getField(Contact::NICKNAME);
+		std::cout << std::setw(10) <<_contact[i].getField(Contact::FIRST_NAME) << "|";
+		std::cout << std::setw(10) <<_contact[i].getField(Contact::LAST_NAME) << "|";
+		std::cout << std::setw(10) <<_contact[i].getField(Contact::NICKNAME);
 		std::cout << std::endl;
 	}
 	std::cout << "Key the index of the entry to display: ";
-	if (!(std::cin >> index) || index >= this->_count)
+	if (!(std::cin >> index) || index >= _count)
 	{
 		clearScreen();
 		std::cout << "Invalid input. Choose from the available indices." << std::endl;
@@ -85,11 +80,11 @@ void	PhoneBook::searchContact()
 	}
 	clearScreen();
 	std::cout << "index: " << index << std::endl;
-	std::cout << "firstName: " << this->_contact[index]->getField(Contact::FIRST_NAME) << std::endl;
-	std::cout << "lastName: " << this->_contact[index]->getField(Contact::LAST_NAME) << std::endl;
-	std::cout << "nickname: " << this->_contact[index]->getField(Contact::NICKNAME) << std::endl;
-	std::cout << "number: " << this->_contact[index]->getField(Contact::NUMBER) << std::endl;
-	std::cout << "secret: " << this->_contact[index]->getField(Contact::SECRET) << std::endl;
+	std::cout << "firstName: " <<_contact[index].getField(Contact::FIRST_NAME) << std::endl;
+	std::cout << "lastName: " << _contact[index].getField(Contact::LAST_NAME) << std::endl;
+	std::cout << "nickname: " << _contact[index].getField(Contact::NICKNAME) << std::endl;
+	std::cout << "number: " <<_contact[index].getField(Contact::NUMBER) << std::endl;
+	std::cout << "secret: " <<_contact[index].getField(Contact::SECRET) << std::endl;
 	std::cout << std::endl;
 }
 

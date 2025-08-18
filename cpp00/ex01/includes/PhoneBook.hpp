@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 13:49:51 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/18 12:09:09 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/18 16:12:30 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,11 @@ class PhoneBook {
 
 		void		addContact();
 		void		searchContact();
-		void		printContact();
 		std::string	displayMenu();
 		void		clearScreen();
 	
 	private:
-		Contact		*_contact[8];
+		Contact		_contact[8];
 		int			_count;
 } ;
 

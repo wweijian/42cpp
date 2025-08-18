@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: weijian <weijian@student.42.fr>            +#+  +:+       +#+         #
+#    By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/14 09:35:27 by weijian           #+#    #+#              #
-#    Updated: 2025/08/14 11:03:06 by weijian          ###   ########.fr        #
+#    Updated: 2025/08/18 19:29:24 by wjhoe            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,3 +40,7 @@ clean:
 
 fclean: clean
 	rm -f ${NAME}
+
+re: fclean all
+
+.PHONY: all clean fclean re
