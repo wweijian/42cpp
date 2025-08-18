@@ -6,18 +6,11 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 21:40:22 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/17 20:47:48 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/18 11:19:21 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Contact.hpp"
-
-/* 
-Contact::Contact(void)	:	_FIRSTNAME();
-							_LASTNAME;
-							_NICKNAME;
-							_NUMBER;
-							_SECRET; */
 
 // Constructors
 Contact::Contact()

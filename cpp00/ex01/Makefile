@@ -6,10 +6,11 @@
 #    By: weijian <weijian@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/14 09:35:27 by weijian           #+#    #+#              #
-#    Updated: 2025/08/18 10:18:07 by weijian          ###   ########.fr        #
+#    Updated: 2025/08/18 13:27:42 by weijian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
+# === NAME === #
 NAME		= phonebook
 
 # === INCLUDES === #
@@ -45,7 +46,7 @@ ${OBJS_DIR}:
 
 # === CLEANUP === #
 clean:
-	rm -f ${OBJS}
+	rm -rf ${OBJS_DIR}
 
 fclean: clean
 	rm -f ${NAME}

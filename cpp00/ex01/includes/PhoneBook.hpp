@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 13:49:51 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/17 20:42:42 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/18 12:09:09 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ class PhoneBook {
 	public:
 		PhoneBook	(void); 
 
-		Contact		*contact[8];
-		int			count;
 		void		addContact();
 		void		searchContact();
 		void		printContact();
@@ -28,6 +26,8 @@ class PhoneBook {
 		void		clearScreen();
 	
 	private:
+		Contact		*_contact[8];
+		int			_count;
 } ;
 
 #endif
