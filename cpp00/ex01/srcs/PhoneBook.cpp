@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 23:02:35 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/18 16:12:58 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/08/18 19:42:50 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ void	PhoneBook::searchContact()
 {
 	int	index;
 	
+	clearScreen();
 	if (_count == 0)
 	{
 		clearScreen();
@@ -63,9 +64,9 @@ void	PhoneBook::searchContact()
 	for (int i = 0; i < this->_count; i++)
 	{
 		std::cout << std::setw(10) << i << "|";
-		std::cout << std::setw(10) <<_contact[i].getField(Contact::FIRST_NAME) << "|";
-		std::cout << std::setw(10) <<_contact[i].getField(Contact::LAST_NAME) << "|";
-		std::cout << std::setw(10) <<_contact[i].getField(Contact::NICKNAME);
+		std::cout << std::setw(10) <<_contact[i].getPreview(Contact::FIRST_NAME) << "|";
+		std::cout << std::setw(10) <<_contact[i].getPreview(Contact::LAST_NAME) << "|";
+		std::cout << std::setw(10) <<_contact[i].getPreview(Contact::NICKNAME);
 		std::cout << std::endl;
 	}
 	std::cout << "Key the index of the entry to display: ";

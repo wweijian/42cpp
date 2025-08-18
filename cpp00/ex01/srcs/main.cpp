@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 14:27:42 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/17 20:59:01 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/18 19:35:49 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int	main(void)
 		{
 			phoneBook.clearScreen();
 			std::cout << "Input not recognized. Try again.\n" << std::endl;
-			continue ;
 		}
 	}
 	std::cout << "The program quits and the contacts are lost forever!" << std::endl;

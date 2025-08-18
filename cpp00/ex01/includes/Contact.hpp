@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 13:49:53 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/18 16:10:24 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/08/18 19:38:30 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ class Contact {
 		
 		/* Functions */
 		const std::string getField(Field field);
+		const std::string getPreview(Field field);
 	
 	private:
 

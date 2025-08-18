@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/16 21:40:22 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/18 16:02:36 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/08/18 19:44:02 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,14 +97,20 @@ const std::string Contact::getField(Field field)
 	std::string	res;
 	
 	switch(field) {
-		case (FIRST_NAME): res = this->_firstName; break ;
-		case (LAST_NAME): res = this->_lastName; break ;
-		case (NICKNAME): res = this->_nickname; break ;
-		case (NUMBER): res = this->_number; break ;
-		case (SECRET): res = this->_secret; break ;
+		case (FIRST_NAME): return(_firstName);
+		case (LAST_NAME): return(_lastName);
+		case (NICKNAME): return(_nickname);
+		case (NUMBER): return(_number);
+		case (SECRET): return(_secret);
 		default: return ("Error: No such field");
 	}
-	if (res.size() > 9)
+}
+
+const std::string Contact::getPreview(Field field)
+{
+	std::string	res = getField(field);
+
+	if (res.size() > 10)
 	{
 		res[9] = '.';
 		res.resize(10);
