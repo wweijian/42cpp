@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   megaphone.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/14 09:53:47 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/16 21:39:46 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/18 20:15:20 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ int main (int ac, char **av)
 			for (int j = 0; av[i][j] != 0; j++) {
 				std::cout << (char) (toupper(av[i][j]));
 			}
-			std::cout << " ";
 		}
 	}
 	std::cout << std::endl;
