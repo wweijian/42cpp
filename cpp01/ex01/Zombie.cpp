@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 23:13:29 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/21 22:29:44 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/22 00:00:39 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,12 @@
 
 /* constructors */
 Zombie::Zombie()
-	:_name(nameZombie()) {}
+	:_name("")
+{}
 
 Zombie::Zombie(std::string name)
-	:_name(name) {
+	:_name(name)
+{
 	announce();
 }
 
@@ -32,17 +34,15 @@ void Zombie::announce()
 	std::cout << _name << ": " << BRAINS << std::endl;
 }
 
-void Zombie::nameZombie()
-{
-	std::string	name;
-	
-	std::cout << "give your zombie a name: " << std::endl;
-	while (!(std::cin >> name)) {
-		if (std::cin.eof())
-			std::cout << "give a proper name, dummy: " << std::endl
-		else {
-			std::cin.clear();
-			std::cin.ignore();
-		}
-	}
+/* while (getline(cin, str)) {
+
 }
+
+if (cin.bad()) {
+    // IO error
+} else if (!cin.eof()) {
+    // format error (not possible with getline but possible with operator>>)
+} else {
+    // format error (not possible with getline but possible with operator>>)
+    // or end of file (can't make the difference)
+} */
