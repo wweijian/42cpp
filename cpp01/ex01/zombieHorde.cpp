@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   randomChump.cpp                                    :+:      :+:    :+:   */
+/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/20 23:34:49 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/21 22:08:43 by weijian          ###   ########.fr       */
+/*   Created: 2025/08/21 22:15:51 by weijian           #+#    #+#             */
+/*   Updated: 2025/08/21 22:16:35 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Zombie.hpp"
 
-void randomChump( std::string name )
+Zombie* zombieHorde( int N, std::string name )
 {
-	Zombie zombie(name);
+	
 }

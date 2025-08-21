@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 22:57:33 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/21 22:21:21 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/21 22:22:07 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ class Zombie {
 		~Zombie();
 
 		/* functions */
-		static 		Zombie* newZombie( std::string name );
-		static void	randomChump( std::string name );
 
 	private:
 		/* variables */
@@ -33,6 +31,8 @@ class Zombie {
 		
 		/* functions */
 		void	announce ( void );
+		void	nameZombie ( void );
+		
 } ;
 
 /* 
