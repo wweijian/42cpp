@@ -3,48 +3,48 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: weijian <weijian@student.42.fr>            +#+  +:+       +#+         #
+#    By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/08/23 12:31:07 by weijian           #+#    #+#              #
-#    Updated: 2025/08/23 13:20:12 by weijian          ###   ########.fr        #
+#    Created: 2025/08/23 14:35:03 by wjhoe             #+#    #+#              #
+#    Updated: 2025/08/23 15:02:55 by wjhoe            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # === NAME === #
-NAME = ex03
+NAME		 = ex03
+
+# === CLASS === #
+CL			= HumanA HumanB Weapon
+CL_SRCS		= $(addsuffix .cpp,${CL})
+CL_INCL		= $(addsuffix .hpp,${CL})
+
+# === SRCS === #
+SRCS		= main.cpp
 
 # === OBJS === #
-OBJS_DIR = objs/
-
-# === CLASS == #
-CLASS = HumanA HumanB Weapon
-CLASS_INCL = $(addsuffix ${CLASS},.hpp)
-CLASS_SRCS = $(addsuffix ${CLASS},.cpp)
-CLASS_OBJS = $(addprefix ${OBJS_DIR},$(CLASS_SRCS:%.cpp=%.o))
-
-# === OTHERS === #
-OTHER_SRCS = main.cpp
-OTHER_OBJS = $(addprefix ${OBJS_DIR},$(OTHER_SRCS:%.cpp=%.o))
-# --- ALL
-OBJS = ${CLASS_OBJS} ${OTHER_OBJS}
+OBJS_DIR	= objs/
+OBJS 		= $(addprefix ${OBJS_DIR},$(SRCS:%.cpp=%.o))
+CL_OBJS 	= $(addprefix ${OBJS_DIR},$(CL_SRCS:%.cpp=%.o))
+ALL_OBJS	= ${OBJS} ${CL_OBJS}
 
 # === COMPILATION === #
 CC			= c++
 VER			= -std=c++98
 CFLAGS		= -Wall -Werror -Wextra ${VER}
 
+
 # === RULES === #
 all: ${NAME}
 
-${NAME}: ${OBJS}
-	${CC} ${CFLAGS} ${OBJS} -o $@
+${NAME}: ${ALL_OBJS}
+	${CC} ${CFLAGS} ${ALL_OBJS} -o $@
 
-${OBJS}: ${CLASS_OBJS} ${OTHER_OBJS} 
+${ALL_OBJS}: ${OBJS} ${CL_OBJS} | ${OBJS_DIR}
 
-${OTHER_OBJS}%.o: ${OTHER_SRCS}% $(CLASS_INCL) | $(OBJS_DIR)
-	$(CC) $(CFLAGS) -c $< -o $@
+${OBJS}: ${OBJS_DIR}%.o: %.cpp ${CL_INCL}
+	${CC} ${CFLAGS} -c $< -o $@
 
-${OBJS_DIR}%.o: %.cpp %.hpp | ${OBJS_DIR}
+${CL_OBJS}: ${OBJS_DIR}%.o: %.cpp %.hpp
 	${CC} ${CFLAGS} -c $< -o $@
 
 # === DIRECTORY === #
