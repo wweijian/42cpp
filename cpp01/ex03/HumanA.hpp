@@ -1,24 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   zombieHorde.cpp                                    :+:      :+:    :+:   */
+/*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/21 22:15:51 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/23 09:14:37 by weijian          ###   ########.fr       */
+/*   Created: 2025/08/23 10:38:45 by weijian           #+#    #+#             */
+/*   Updated: 2025/08/23 11:59:13 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#pragma once
 
-Zombie* zombieHorde( int N, std::string name )
+#include <iostream>
+#include "Weapon.hpp"
+
+class	HumanA
 {
-	if (N <= 0)
-		return (NULL);
-	Zombie* horde = new Zombie[N];
-	for (int i = 0; i < N; i++) {
-		horde[i].setName(name);
-	}
-	return (horde);
-}
+	public:
+		/* constructors */
+		HumanA();
+		HumanA(std::string name, Weapon weapon);
+
+		~HumanA();
+		
+		/* functions */
+		void 				attack();
+		std::string const	getName();
+
+	private:
+		/* variables */
+		std::string const	_name;
+		Weapon				_weapon;
+
+		/* functions */
+		std::string const	setName();
+} ;

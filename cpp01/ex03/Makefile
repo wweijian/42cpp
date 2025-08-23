@@ -5,23 +5,28 @@
 #                                                     +:+ +:+         +:+      #
 #    By: weijian <weijian@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/08/20 22:48:09 by weijian           #+#    #+#              #
-#    Updated: 2025/08/23 12:31:26 by weijian          ###   ########.fr        #
+#    Created: 2025/08/23 12:31:07 by weijian           #+#    #+#              #
+#    Updated: 2025/08/23 13:20:12 by weijian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # === NAME === #
-NAME = ex01
+NAME = ex03
 
-# === INCLUDES === #
-INCL = Zombie.hpp
-
-# === SOURCE === #
-SRCS = Zombie.cpp main.cpp zombieHorde.cpp
-
-# === OBJECTS === #
+# === OBJS === #
 OBJS_DIR = objs/
-OBJS = $(addprefix ${OBJS_DIR},$(SRCS:%.cpp=%.o))
+
+# === CLASS == #
+CLASS = HumanA HumanB Weapon
+CLASS_INCL = $(addsuffix ${CLASS},.hpp)
+CLASS_SRCS = $(addsuffix ${CLASS},.cpp)
+CLASS_OBJS = $(addprefix ${OBJS_DIR},$(CLASS_SRCS:%.cpp=%.o))
+
+# === OTHERS === #
+OTHER_SRCS = main.cpp
+OTHER_OBJS = $(addprefix ${OBJS_DIR},$(OTHER_SRCS:%.cpp=%.o))
+# --- ALL
+OBJS = ${CLASS_OBJS} ${OTHER_OBJS}
 
 # === COMPILATION === #
 CC			= c++
@@ -34,8 +39,15 @@ all: ${NAME}
 ${NAME}: ${OBJS}
 	${CC} ${CFLAGS} ${OBJS} -o $@
 
-${OBJS_DIR}%.o: ${SRCS_DIR}%.cpp ${INCL} | ${OBJS_DIR}
+${OBJS}: ${CLASS_OBJS} ${OTHER_OBJS} 
+
+${OTHER_OBJS}%.o: ${OTHER_SRCS}% $(CLASS_INCL) | $(OBJS_DIR)
+	$(CC) $(CFLAGS) -c $< -o $@
+
+${OBJS_DIR}%.o: %.cpp %.hpp | ${OBJS_DIR}
 	${CC} ${CFLAGS} -c $< -o $@
+
+# === DIRECTORY === #
 
 ${OBJS_DIR}:
 	mkdir -p $@

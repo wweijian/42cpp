@@ -6,22 +6,15 @@
 #    By: weijian <weijian@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/20 22:48:09 by weijian           #+#    #+#              #
-#    Updated: 2025/08/23 12:31:26 by weijian          ###   ########.fr        #
+#    Updated: 2025/08/23 12:31:34 by weijian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # === NAME === #
-NAME = ex01
-
-# === INCLUDES === #
-INCL = Zombie.hpp
+NAME = ex02
 
 # === SOURCE === #
-SRCS = Zombie.cpp main.cpp zombieHorde.cpp
-
-# === OBJECTS === #
-OBJS_DIR = objs/
-OBJS = $(addprefix ${OBJS_DIR},$(SRCS:%.cpp=%.o))
+SRCS = main.cpp
 
 # === COMPILATION === #
 CC			= c++
@@ -31,21 +24,14 @@ CFLAGS		= -Wall -Werror -Wextra ${VER}
 # === RULES === #
 all: ${NAME}
 
-${NAME}: ${OBJS}
-	${CC} ${CFLAGS} ${OBJS} -o $@
-
-${OBJS_DIR}%.o: ${SRCS_DIR}%.cpp ${INCL} | ${OBJS_DIR}
-	${CC} ${CFLAGS} -c $< -o $@
-
-${OBJS_DIR}:
-	mkdir -p $@
+${NAME}: ${SRCS}
+	${CC} ${CFLAGS} ${SRCS} -o $@
 
 # === CLEANUP === #
 clean:
-	rm -rf ${OBJS_DIR}
+	rm -r ${NAME}
 
 fclean: clean
-	rm -f ${NAME}
 
 re: fclean all
 

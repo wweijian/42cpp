@@ -6,12 +6,12 @@
 #    By: weijian <weijian@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/20 22:48:09 by weijian           #+#    #+#              #
-#    Updated: 2025/08/20 23:13:12 by weijian          ###   ########.fr        #
+#    Updated: 2025/08/23 12:31:39 by weijian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # === NAME === #
-NAME = zombie
+NAME = ex00
 
 # === INCLUDES === #
 INCL = Zombie.hpp

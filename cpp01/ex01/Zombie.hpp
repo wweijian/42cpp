@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/20 22:57:33 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/21 22:22:07 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/23 09:14:19 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ class Zombie {
 		~Zombie();
 
 		/* functions */
+		void	setName ( std::string );
 
 	private:
 		/* variables */
@@ -31,7 +32,6 @@ class Zombie {
 		
 		/* functions */
 		void	announce ( void );
-		void	nameZombie ( void );
 		
 } ;
 
