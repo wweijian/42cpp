@@ -6,11 +6,12 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 17:08:05 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/24 22:16:13 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/24 23:00:49 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Fixed.hpp"
+#include <cmath>
 
 /* constructors */
 
@@ -35,6 +36,18 @@ Fixed& Fixed::operator=(const Fixed &fixed) // assignment operator
 	return *this;
 }
 
+Fixed::Fixed(int i)
+	:	_fixedPointNumberValue( i << _fractionalBits )
+{
+	std::cout << "integer constructor called" << std::endl;
+}
+
+Fixed::Fixed(float f)
+	:	_fixedPointNumberValue( roundf(f * (1 << _fractionalBits)) )
+{
+	std::cout << "float constructor called" << std::endl;
+}
+
 Fixed::~Fixed()
 {
 	std::cout << "destructor called" << std::endl;
@@ -43,14 +56,31 @@ Fixed::~Fixed()
 /* static constants */
 const int	Fixed::_fractionalBits = 8;
 
+/* funcitions */
+
 int	Fixed::getRawBits() const
 {
-	std::cout << "getRawBits function called" << std::endl;
 	return (_fixedPointNumberValue);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
-	std::cout << "setRawBits function called" << std::endl;
 	_fixedPointNumberValue = raw;
+}
+
+int	Fixed::toInt(void) const
+{
+	return (_fixedPointNumberValue >> _fractionalBits);
+}
+
+float	Fixed::toFloat(void) const
+{
+	return static_cast<float>(getRawBits()) / (1 << _fractionalBits);
+}
+
+/* << operator */
+std::ostream& operator<<(std::ostream& os, const Fixed& fixed)
+{
+	os << fixed.toFloat();
+	return (os);
 }

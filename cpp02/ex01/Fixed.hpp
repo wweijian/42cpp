@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 17:08:01 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/24 22:16:40 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/24 23:02:42 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,17 @@ class Fixed
 	/* constructors */
 	Fixed();
 	~Fixed();
+	Fixed(int i);
+	Fixed(float f);
+
 	Fixed(const Fixed &fixed);
 	Fixed& operator=(const Fixed &fixed);
-	
+
 	/* functions */
 	int		getRawBits() const;
 	void	setRawBits(int const raw);
+	int		toInt(void) const;
+	float	toFloat(void) const;
 	
 	private:
 	/* variables */
@@ -47,4 +52,4 @@ class Fixed
 	static const int	_fractionalBits;
 } ;
 
-
+std::ostream& operator<<(std::ostream& os, const Fixed& fixed);
