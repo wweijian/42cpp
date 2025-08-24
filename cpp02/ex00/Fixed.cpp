@@ -29,7 +29,8 @@ Fixed::Fixed(const Fixed &fixed)
 
 Fixed& Fixed::operator=(const Fixed &fixed)
 {
-
+    std::cout << "assignment operator called" << std::endl;
+    return *this;
 }
 
 
