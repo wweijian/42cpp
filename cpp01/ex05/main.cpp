@@ -1,24 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   File.hpp                                           :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/08/23 15:21:28 by wjhoe             #+#    #+#             */
-/*   Updated: 2025/08/23 15:24:29 by wjhoe            ###   ########.fr       */
+/*   Created: 2025/08/24 11:40:09 by weijian           #+#    #+#             */
+/*   Updated: 2025/08/24 13:30:50 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "Harl.hpp"
 
-#include <iostream>
-
-class File
+int main()
 {
-	public:
+	Harl 		harl;
+	std::string	level;
 
-	private:
-	/* variables */
-		
+	while(true)
+	{
+		std::cout << "what is your complaint?: " << std::flush;
+		if (!(std::cin >> level))
+			return (0);
+		harl.complain(level);
+	}
 }

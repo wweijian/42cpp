@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+         #
+#    By: weijian <weijian@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/23 14:35:03 by wjhoe             #+#    #+#              #
-#    Updated: 2025/08/23 15:02:55 by wjhoe            ###   ########.fr        #
+#    Updated: 2025/08/24 13:05:26 by weijian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,12 +39,10 @@ all: ${NAME}
 ${NAME}: ${ALL_OBJS}
 	${CC} ${CFLAGS} ${ALL_OBJS} -o $@
 
-${ALL_OBJS}: ${OBJS} ${CL_OBJS} | ${OBJS_DIR}
-
-${OBJS}: ${OBJS_DIR}%.o: %.cpp ${CL_INCL}
+${OBJS}: ${OBJS_DIR}%.o: %.cpp ${CL_INCL} | ${OBJS_DIR}
 	${CC} ${CFLAGS} -c $< -o $@
 
-${CL_OBJS}: ${OBJS_DIR}%.o: %.cpp %.hpp
+${CL_OBJS}: ${OBJS_DIR}%.o: %.cpp %.hpp | ${OBJS_DIR}
 	${CC} ${CFLAGS} -c $< -o $@
 
 # === DIRECTORY === #
