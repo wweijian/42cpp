@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 17:08:05 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/24 22:16:13 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/24 23:30:34 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ Fixed::Fixed()
 	std::cout << "default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed &fixed) // copy constructor
+Fixed::Fixed(const Fixed& fixed) // copy constructor
 {
 	std::cout << "copy constructor called" << std::endl;
 	_fixedPointNumberValue = fixed.getRawBits();
