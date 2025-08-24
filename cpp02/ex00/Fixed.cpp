@@ -22,10 +22,15 @@ Fixed::~Fixed()
 {}
 
 Fixed::Fixed(const Fixed &fixed)
-	:	_integer(fixed.getRawBits)
-{}
+{
+    _integer = fixed._integer;
+    std::cout << "copy constructor called" << std::endl;
+}
 
-Fixed& Fixed::operator=(const Fixed &fixed);
+Fixed& Fixed::operator=(const Fixed &fixed)
+{
+
+}
 
 
 /* static constants */
