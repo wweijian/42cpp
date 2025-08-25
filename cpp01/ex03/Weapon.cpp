@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 10:20:25 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/25 11:01:51 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/08/25 13:50:51 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ Weapon::~Weapon()
 
 /* functions */
 
-std::string	Weapon::getType()
+const std::string	&Weapon::getType()
 {
 	return (_type);
 }
