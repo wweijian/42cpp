@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 10:20:25 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/23 12:07:36 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/25 11:01:51 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ std::string	Weapon::getType()
 	return (_type);
 }
 
-void	Weapon::setType(std::string type)
+void	Weapon::setType(std::string const type)
 {
 	_type = type;
 }

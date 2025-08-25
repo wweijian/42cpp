@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanA.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 10:38:45 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/23 11:59:13 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/25 11:11:59 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ class	HumanA
 	public:
 		/* constructors */
 		HumanA();
-		HumanA(std::string name, Weapon weapon);
+		HumanA(std::string name, Weapon &weapon);
 
 		~HumanA();
 		
@@ -31,7 +31,7 @@ class	HumanA
 	private:
 		/* variables */
 		std::string const	_name;
-		Weapon				_weapon;
+		Weapon				*_weapon;
 
 		/* functions */
 		std::string const	setName();
