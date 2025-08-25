@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/25 00:32:25 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/25 02:28:24 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/25 09:21:11 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,11 +64,18 @@ void	Point::setY(Fixed const fixed)
 
 Fixed	Point::areaOf(Point const a, Point const b, Point const c)
 {
-	return ((	a.getX() * (b.getY() - c.getY())
-				+ b.getX() * (c.getY() - a.getY())
-				+ c.getX() * (a.getY() - b.getY())	)
-				/ 2)
-			;
+	Fixed	area = (a.getX() * (b.getY() - c.getY())
+				 + b.getX() * (c.getY() - a.getY())
+				 + c.getX() * (a.getY() - b.getY()))
+				 / 2;
+	if (area < Fixed(0))
+	{
+		area = (a.getX() * (c.getY() - b.getY())
+				 + b.getX() * (a.getY() - c.getY())
+				 + c.getX() * (b.getY() - a.getY()))
+				 / 2;
+	}
+	return (area);
 }
 
 bool	Point::isOnLine(Point const a, Point const b) const

@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 21:18:23 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/25 02:30:31 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/25 09:28:26 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,14 @@ bool	bsp(Point const a,
 {	
 	if (x.isOnLine(a, b) || x.isOnLine(b, c) || x.isOnLine(a, c))
 		return (false);
-	return (Point::areaOf(a, b, c) <= (Point::areaOf(a, b, x)
-									  + Point::areaOf(a, x, c)
-									  + Point::areaOf(x, b, c))
-			);
+	
+	Fixed	totalArea = Point::areaOf(a, b, c);
+	Fixed	summedArea  = (Point::areaOf(a, b, x)
+						+ Point::areaOf(a, x, c)
+						+ Point::areaOf(x, b, c));
+	Fixed	epsilon = Fixed(0.001f);
+	Fixed	diff = (summedArea > totalArea) ? (summedArea - totalArea) : (totalArea - summedArea);
+	return (diff <= epsilon);
 }
 
 int main( void ) {
@@ -33,7 +37,7 @@ int main( void ) {
 	Fixed cX = 0.0f;
 	Fixed cY = 10.0f;
 	Fixed dX = 2.0f;
-	Fixed dY = 8.0f;
+	Fixed dY = 15.0f;
 	
 	Point a(aX, aY);
 	Point b(bX, bY);
