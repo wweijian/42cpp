@@ -6,11 +6,11 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 13:37:00 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/31 16:03:50 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/31 22:40:44 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
 void	noHp(ClapTrap &clapTrap)
 {
@@ -43,15 +43,17 @@ int main(int ac, char **av)
 	if (ac != 2)
 		return (1);
 		
-	ClapTrap clapTrap;
+	ScavTrap scavTrap("scavvy");
 
 	switch(std::atoi(av[1])) {
+		case 0:
+			scavTrap.guardGate(); break;
 		case 1:
-			noHp(clapTrap); break ;
+			noHp(scavTrap); break ;
 		case 2:
-			noEnergy1(clapTrap); break ;
+			noEnergy1(scavTrap); break ;
 		case 3:
-			noEnergy2(clapTrap); break ;
+			noEnergy2(scavTrap); break ;
 		default:
 			std::cout << "option unavailable" << std::endl;
 	}

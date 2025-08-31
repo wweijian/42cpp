@@ -6,12 +6,12 @@
 #    By: weijian <weijian@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/31 14:17:20 by weijian           #+#    #+#              #
-#    Updated: 2025/08/31 16:53:54 by weijian          ###   ########.fr        #
+#    Updated: 2025/08/31 22:34:18 by weijian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # === NAME === #
-NAME		 = ex00
+NAME		 = ex01
 
 # === SRCS === #
 SRCS		= main.cpp
@@ -20,7 +20,7 @@ INCL_DIR	= includes/
 SRCS		:= $(addprefix ${SRCS_DIR},${SRCS})
 
 # === CLASS === #
-CL			= ClapTrap
+CL			= ClapTrap ScavTrap
 CL_SRCS		= $(addprefix ${SRCS_DIR},$(addsuffix .cpp,${CL}))
 CL_INCL		= $(addprefix ${INCL_DIR},$(addsuffix .hpp,${CL}))
 

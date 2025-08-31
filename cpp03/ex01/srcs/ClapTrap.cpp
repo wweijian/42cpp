@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 09:44:26 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/31 16:02:33 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/31 22:42:00 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,20 @@
 /* constructors */
 ClapTrap::ClapTrap()
 	:	_name("Clappy"),
-		_hitPts(MAX_HP),
-		_energyPts(MAX_EP),
-		_attackDmg(DEFAULT_DMG)
+		_hitPts(CLAP_MAX_HP),
+		_energyPts(CLAP_MAX_EP),
+		_attackDmg(CLAP_DEFAULT_DMG)
 {
-	std::cerr << _name << " constructed" << std::endl;
+	std::cerr << "[ClapTrap]" << _name << " constructed" << std::endl;
+}
+
+ClapTrap::ClapTrap(std::string name)
+	:	_name(name),
+		_hitPts(CLAP_MAX_HP),
+		_energyPts(CLAP_MAX_EP),
+		_attackDmg(CLAP_DEFAULT_DMG)
+{
+	std::cerr << "[ClapTrap]" << _name << " constructed" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& other)
@@ -28,7 +37,7 @@ ClapTrap::ClapTrap(const ClapTrap& other)
 		_energyPts(other._energyPts),
 		_attackDmg(other._attackDmg)
 {
-	std::cerr << _name << " copied" << std::endl;
+	std::cerr << "[ClapTrap]" << _name << " copied" << std::endl;
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& other)
@@ -39,14 +48,14 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& other)
 		_energyPts = other._energyPts;
 		_attackDmg = other._attackDmg;
 	}
-	std::cerr << _name << " assigned" << std::endl;
+	std::cerr << "[ClapTrap]" << _name << " assigned" << std::endl;
 	return *this;
 }
 
 /* destructor */
 ClapTrap::~ClapTrap()
 {
-	std::cerr << _name << " destroyed" << std::endl;
+	std::cerr << "[ClapTrap]" << _name << " destroyed" << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target)
@@ -101,11 +110,11 @@ void ClapTrap::beRepaired(unsigned int amount)
 		std::cout << _name << " can't heal because it has no energy" << std::endl;
 		return ;
 	}
-	if (_hitPts == MAX_HP)
+	if (_hitPts == getMaxHP())
 		std::cout << _name << " is at full hp!";
-	else if (_hitPts + amount >= MAX_HP)
+	else if (_hitPts + amount >= getMaxHP())
 		std::cout	<< _name << " has healed "
-					<< _hitPts + amount - MAX_HP << " to the full HP";
+					<< _hitPts + amount - getMaxHP() << " to the full HP";
 	else
 		std::cout	<< _name << " has healed "
 					<< _hitPts << " HP";
@@ -133,6 +142,11 @@ unsigned int	ClapTrap::getEnergy() const
 unsigned int	ClapTrap::getAttack() const
 {
 	return(_attackDmg);
+}
+
+unsigned int	ClapTrap::getMaxHP() const
+{
+	return (CLAP_MAX_HP);
 }
 
 /* print */

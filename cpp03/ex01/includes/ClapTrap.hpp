@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 09:25:40 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/31 15:13:22 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/31 22:40:06 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,19 @@
 
 #include <iostream>
 
-#define	MAX_HP 10
-#define	MAX_EP 10
-#define	DEFAULT_DMG 0
+#define	CLAP_MAX_HP 10
+#define	CLAP_MAX_EP 10
+#define	CLAP_DEFAULT_DMG 0
 
 class	ClapTrap
 {
 	public:
 		/* constructor */
 		ClapTrap();
-		~ClapTrap();
+		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap& clapTrap);
 		ClapTrap& operator=(const ClapTrap& other);
+		~ClapTrap();
 
 		/* functions */
 		void attack(const std::string& target);
@@ -33,18 +34,21 @@ class	ClapTrap
 		void beRepaired(unsigned int amount);
 
 		/* getters */
-		std::string		getName() const ;
-		unsigned int	getHp() const ;
-		unsigned int	getEnergy() const ;
-		unsigned int	getAttack() const ;
+		std::string				getName() const ;
+		unsigned int			getHp() const ;
+		unsigned int			getEnergy() const ;
+		unsigned int			getAttack() const ;
 
-	private:
+	protected:
 		/* variables */
-		std::string		_name;
-		unsigned int	_hitPts;
-		unsigned int	_energyPts;
-		unsigned int	_attackDmg;
+		std::string				_name;
+		unsigned int			_hitPts;
+		unsigned int			_energyPts;
+		unsigned int			_attackDmg;
+
+		/* static const variables */
+		virtual unsigned int	getMaxHP() const ;
 
 		/* function */
-		void		printEnergy();
+		void					printEnergy();
 } ;

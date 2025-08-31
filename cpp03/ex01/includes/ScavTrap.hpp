@@ -6,13 +6,36 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 16:54:54 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/31 17:02:21 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/31 22:40:00 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 # include <iostream>
+# include "ClapTrap.hpp"
+
+#define	SCAV_MAX_HP 100
+#define	SCAV_MAX_EP 50
+#define	SCAV_DEFAULT_DMG 20
+
+class	ScavTrap : public ClapTrap
+{
+	public:
+		/* constructor */
+		ScavTrap();
+		ScavTrap(std::string name);
+		ScavTrap(const ScavTrap& ScavTrap);
+		ScavTrap& operator=(const ScavTrap& other);
+		~ScavTrap();
+
+		/* functions */
+		void 			guardGate();
+	private:
+		unsigned int	getMaxHP() const;
+
+	protected:
+} ;
 
 /* 
 	In C++, private members are inherited by derived classes,
@@ -24,12 +47,3 @@
 	In contrast, protected members are accessible within derived classes, 
 	and public members are accessible both inside derived classes and from outside the class.
 */
-
-class	ScavTrap
-{
-	public:
-
-	private:
-
-	protected:
-} ;
