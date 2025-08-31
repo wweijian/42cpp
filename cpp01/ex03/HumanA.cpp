@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanA.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 10:43:04 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/23 11:54:48 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/25 11:11:35 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ HumanA::HumanA()
 		_weapon()
 {}
 
-HumanA::HumanA(std::string name, Weapon weapon)
+HumanA::HumanA(std::string name, Weapon &weapon)
 	:	_name(name),
-		_weapon(weapon)
+		_weapon(&weapon)
 {}
 
 HumanA::~HumanA()
@@ -31,10 +31,10 @@ HumanA::~HumanA()
 void	HumanA::attack()
 {
 	std::cout << _name << " attacks with their ";
-	if (_weapon.getType().empty())
+	if (_weapon->getType().empty())
 		std::cout << " FISTS!?" << std::endl;
 	else
-		std::cout << _weapon.getType() << std::endl;
+		std::cout << _weapon->getType() << std::endl;
 }
 
 std::string const	HumanA::setName()

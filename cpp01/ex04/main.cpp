@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 17:45:19 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/24 09:55:53 by weijian          ###   ########.fr       */
+/*   Updated: 2025/08/25 10:56:03 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	main (int ac, char **av)
 	std::ifstream infile(av[1]);
 	if (!infile.is_open())
 		return (1);
-	std::ofstream outfile(std::string(av[1]).append(".replace"));	
+	std::ofstream outfile((std::string(av[1]).append(".replace")).c_str());
 	if (!outfile.is_open())
 		return (1);
 
