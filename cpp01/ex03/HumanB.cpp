@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   HumanB.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/23 11:50:37 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/23 12:29:15 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/01 20:22:50 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,10 @@ HumanB::~HumanB()
 void	HumanB::attack()
 {
 	std::cout << _name << " attacks with their ";
-	if ((*_weapon).getType().empty())
-		std::cout << " FISTS!?" << std::endl;
+	if (!_weapon)
+		std::cout << "FISTS!?" << std::endl;
+	else if ((*_weapon).getType().empty())
+		std::cout << "FISTS!?" << std::endl;
 	else
 		std::cout << (*_weapon).getType() << std::endl;
 }
