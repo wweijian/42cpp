@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 17:08:01 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/24 23:32:22 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/04 09:01:07 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,3 @@ class Fixed
 	int					_fixedPointNumberValue;
 	static const int	_fractionalBits;
 } ;
-
-
