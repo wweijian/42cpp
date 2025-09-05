@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 17:08:05 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/25 00:19:16 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/05 15:43:54 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,7 +140,7 @@ Fixed&	Fixed::operator--()
 Fixed	Fixed::operator--(int)
 {
 	Fixed& temp(*this);
-	++(*this);
+	--(*this);
 	return (temp);
 }
 
