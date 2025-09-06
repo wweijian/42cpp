@@ -23,22 +23,17 @@ Point::Point(Fixed x, Fixed y)
 {}
 
 Point::Point(const Point& point)
-{	
-	_x = point.getX();
-	_y = point.getY();
-}
+		:	_x(point.getX()),
+			_y(point.getY())
+{}
 
 Point::~Point()
 {}
 
 /* operator */
-Point& Point::operator=(const Point& point)
+const Point& Point::operator=(const Point& point)
 {
-	if (this != &point) {
-		_x = point.getX();
-		_y = point.getY();
-	}
-	return *this;
+	return point;
 }
 
 /* functions */
@@ -50,14 +45,6 @@ Fixed	Point::getX() const
 Fixed	Point::getY() const
 {
 	return (_y);
-}
-void	Point::setX(Fixed const fixed)
-{
-	_x = fixed;
-}
-void	Point::setY(Fixed const fixed)
-{
-	_y = fixed;
 }
 
 /* static functions */

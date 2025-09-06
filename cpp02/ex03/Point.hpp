@@ -24,7 +24,7 @@ class Point
 	~Point();
 
 	/* operator */
-	Point &operator=(const Point& point);
+	const Point &operator=(const Point& point);
 
 	/* functions */
 	bool			bsp(Point const a,
@@ -42,8 +42,8 @@ class Point
 	
 	private:
 	/* variables */
-	Fixed		_x;
-	Fixed		_y;
+	const Fixed		_x;
+	const Fixed		_y;
 
 	/* function */
 

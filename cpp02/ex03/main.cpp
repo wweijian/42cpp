@@ -37,7 +37,7 @@ int main( void ) {
 	Fixed cX = 0.0f;
 	Fixed cY = 10.0f;
 	Fixed dX = 2.0f;
-	Fixed dY = 15.0f;
+	Fixed dY = 5.0f;
 	
 	Point a(aX, aY);
 	Point b(bX, bY);
