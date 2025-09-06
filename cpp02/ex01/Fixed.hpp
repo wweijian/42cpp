@@ -34,8 +34,8 @@ class Fixed
 	/* constructors */
 	Fixed();
 	~Fixed();
-	Fixed(int i);
-	Fixed(float f);
+	Fixed(const int i);
+	Fixed(const float f);
 
 	Fixed(const Fixed &fixed);
 	Fixed& operator=(const Fixed& fixed);

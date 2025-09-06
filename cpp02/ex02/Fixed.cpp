@@ -32,11 +32,11 @@ Fixed& Fixed::operator=(const Fixed &fixed) // assignment operator
 	return *this;
 }
 
-Fixed::Fixed(int i)
+Fixed::Fixed(const int i)
 	:	_fixedPointNumberValue( i << _fractionalBits )
 {}
 
-Fixed::Fixed(float f)
+Fixed::Fixed(const float f)
 	:	_fixedPointNumberValue( roundf(f * (1 << _fractionalBits)) )
 {}
 
