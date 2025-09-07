@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
+#include <cstdlib>
 
 void	noHp(ClapTrap &clapTrap)
 {

@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "FragTrap.hpp"
+#incldue <cstdlib>
 
 void	noHp(ClapTrap &clapTrap)
 {

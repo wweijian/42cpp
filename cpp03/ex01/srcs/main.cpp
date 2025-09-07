@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "ScavTrap.hpp
+#include <cstdlib>
 
 void	noHp(ClapTrap &clapTrap)
 {

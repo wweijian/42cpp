@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "DiamondTrap.hpp"
+#include <cstdlib>
 
 void	noHp(DiamondTrap &clapTrap)
 {
