@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp
+#include "ScavTrap.hpp"
 #include <cstdlib>
 
 void	noHp(ClapTrap &clapTrap)
@@ -23,7 +23,7 @@ void	noHp(ClapTrap &clapTrap)
 
 void	noEnergy1(ClapTrap &clapTrap)
 {
-	while (clapTrap.getEnergy() > 0)
+	while (clapTrap.getEnergy() > 0 && clapTrap.getHp())
 		clapTrap.attack("other");
 	clapTrap.attack("other");
 	clapTrap.beRepaired(50);
@@ -32,7 +32,7 @@ void	noEnergy1(ClapTrap &clapTrap)
 
 void	noEnergy2(ClapTrap &clapTrap)
 {
-	while (clapTrap.getEnergy() > 0)
+	while (clapTrap.getEnergy() > 0 && clapTrap.getHp())
 		clapTrap.beRepaired(50);
 	clapTrap.attack("other");
 	clapTrap.beRepaired(50);

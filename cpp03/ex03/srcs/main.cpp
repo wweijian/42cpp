@@ -23,7 +23,7 @@ void	noHp(DiamondTrap &clapTrap)
 
 void	noEnergy1(DiamondTrap &clapTrap)
 {
-	while (clapTrap.getEnergy() > 0)
+	while (clapTrap.getEnergy() > 0 && clapTrap.getHp())
 		clapTrap.attack("other");
 	clapTrap.attack("other");
 	clapTrap.beRepaired(50);
@@ -32,7 +32,7 @@ void	noEnergy1(DiamondTrap &clapTrap)
 
 void	noEnergy2(DiamondTrap &clapTrap)
 {
-	while (clapTrap.getEnergy() > 0)
+	while (clapTrap.getEnergy() > 0 && clapTrap.getHp())
 		clapTrap.beRepaired(50);
 	clapTrap.attack("other");
 	clapTrap.beRepaired(50);

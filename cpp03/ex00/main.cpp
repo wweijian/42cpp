@@ -32,7 +32,7 @@ void	noEnergy1(ClapTrap &clapTrap)
 
 void	noEnergy2(ClapTrap &clapTrap)
 {
-	while (clapTrap.getEnergy() > 0)
+	while (clapTrap.getEnergy() > 0 && clapTrap.getHp() > 0)
 		clapTrap.beRepaired(50);
 	clapTrap.attack("other");
 	clapTrap.beRepaired(50);
