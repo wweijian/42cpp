@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 13:37:00 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/08 10:05:42 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/09/08 10:26:42 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int main(int ac, char **av)
 {
 	if (ac != 2)
 	{
-		std::cout << "usage: ./ex00 [n]" << std::endl;
+		std::cout << "usage: ./ex02 [n]" << std::endl;
 		return (1);
 	}
 
