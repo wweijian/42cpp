@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 21:18:23 by weijian           #+#    #+#             */
-/*   Updated: 2025/08/25 09:28:26 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/06 17:19:53 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,8 @@ int main( void ) {
 	Fixed bY = 10.0f;
 	Fixed cX = 0.0f;
 	Fixed cY = 10.0f;
-	Fixed dX = 2.0f;
-	Fixed dY = 5.0f;
+	Fixed dX = 0.0f;
+	Fixed dY = 10.0f;
 	
 	Point a(aX, aY);
 	Point b(bX, bY);

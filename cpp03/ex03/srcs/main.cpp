@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 13:37:00 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/01 09:03:59 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/08 10:05:53 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,11 @@ void	noEnergy2(DiamondTrap &clapTrap)
 int main(int ac, char **av)
 {
 	if (ac != 2)
+	{
+		std::cout << "usage: ./ex00 [n]" << std::endl;
 		return (1);
-		
+	}
+
 	DiamondTrap qwerty("qwerty");
 
 	switch(std::atoi(av[1])) {

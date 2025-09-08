@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 13:37:00 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/01 07:24:43 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/08 10:05:42 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,11 @@ void	noEnergy2(ClapTrap &clapTrap)
 int main(int ac, char **av)
 {
 	if (ac != 2)
+	{
+		std::cout << "usage: ./ex00 [n]" << std::endl;
 		return (1);
-		
+	}
+
 	FragTrap FragTrap("fraggy");
 
 	switch(std::atoi(av[1])) {
