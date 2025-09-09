@@ -33,8 +33,7 @@ Dog::~Dog()
 /* operators */
 Dog& Dog::operator=(const Dog& other)
 {
-	if (this != &other)
-	{
+	if (this != &other) {
 		type_ = other.type_;
 	}
 	return (*this);

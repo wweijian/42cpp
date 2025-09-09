@@ -33,8 +33,7 @@ Cat::~Cat()
 /* operators */
 Cat& Cat::operator=(const Cat& other)
 {
-	if (this != &other)
-	{
+	if (this != &other) {
 		type_ = other.type_;
 	}
 	return (*this);

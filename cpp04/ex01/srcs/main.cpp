@@ -14,23 +14,27 @@
 #include "Dog.hpp"
 #include "WrongCat.hpp"
 
+#define SIZE 10
+
 int main()
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); // will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
-	delete meta;
-	delete j;
-	delete i;
+	const Animal* zoo[SIZE];
+	for (int i = 0; i < SIZE; i++) {
+		if (i % 2)
+			zoo[i] = new Dog();
+		else
+			zoo[i] = new Cat();
+	}
 
-	const WrongAnimal* wrongi = new WrongCat();
-	wrongi->makeSound();
-	delete wrongi;
-	
+	const Dog *temp = static_cast<const Dog*>(zoo[SIZE % 2]);
+	temp->getBrain()->setIdea("water is wet");
+	Dog upDog = *temp;
+	upDog.getBrain()->setIdea("water is not wet");
+	std::cout << "updog: " << upDog.getBrain()-> getIdeas(0);
+	std::cout << "temp: " << temp->getBrain()-> getIdeas(0);
+
+	for (int i = 0; i < SIZE; i++) {
+		delete zoo[i];
+	}
 	return 0;
 }

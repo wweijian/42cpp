@@ -33,7 +33,7 @@ ALL_OBJS	= ${OBJS} ${CL_OBJS}
 # === COMPILATION === #
 CC			= c++
 VER			= -std=c++98
-CFLAGS		= -Wall -Werror -Wextra ${VER} -I${INCL_DIR}
+CFLAGS		= -g -Wall -Werror -Wextra ${VER} -I${INCL_DIR}
 
 # === RULES === #
 all: ${NAME}
