@@ -19,6 +19,7 @@ Dog::Dog()
 }
 
 Dog::Dog(const Dog& other)
+	:	Animal(other)
 {
 	*this = other;
 	std::cerr << "Dog copied" << std::endl;

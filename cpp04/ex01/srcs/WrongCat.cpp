@@ -19,6 +19,7 @@ WrongCat::WrongCat()
 }
 
 WrongCat::WrongCat(const WrongCat& other)
+	:	WrongAnimal(other)
 {
 	*this = other;
 	std::cerr << "WrongCat copied" << std::endl;

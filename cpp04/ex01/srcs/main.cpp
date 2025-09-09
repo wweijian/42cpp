@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 13:38:53 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/05 10:34:25 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/05 08:14:33 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,23 @@
 #include "Dog.hpp"
 #include "WrongCat.hpp"
 
-#define SIZE 10
-
 int main()
 {
-	const Animal* zoo[SIZE];
-	for (int i = 0; i < SIZE; i++) {
-		if (i % 2)
-			zoo[i] = new Dog();
-		if (!(i % 2))
-			zoo[i] = new Cat();
-	}
-	Dog upDog(*(dynamic_cast<const Dog*>(zoo[5])));
-	for (int i = 0; i < SIZE; i++) {
-		delete zoo[i];
-	}
-	std::cout << "upDog says"; upDog.makeSound();
+	const Animal* meta = new Animal();
+	const Animal* j = new Dog();
+	const Animal* i = new Cat();
+	std::cout << j->getType() << " " << std::endl;
+	std::cout << i->getType() << " " << std::endl;
+	i->makeSound(); // will output the cat sound!
+	j->makeSound();
+	meta->makeSound();
+	delete meta;
+	delete j;
+	delete i;
+
+	const WrongAnimal* wrongi = new WrongCat();
+	wrongi->makeSound();
+	delete wrongi;
+	
 	return 0;
 }

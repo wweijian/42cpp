@@ -22,11 +22,15 @@ class Brain
 		~Brain();
 		Brain(const Brain& other);
 		Brain& operator=(const Brain& other);
-	
+
+		/* functions */
 		std::string	getIdeas() const;
 		std::string	getIdeas(int i) const;
+		int			getIdeaCount() const;
+		void		setIdea(std::string); 
 
 	private:
-		std::string	ideas[100];
-
+		/* variables */
+		std::string	_ideas[100];
+		int			_ideaCount;
 } ;

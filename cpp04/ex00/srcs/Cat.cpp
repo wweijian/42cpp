@@ -19,6 +19,7 @@ Cat::Cat()
 }
 
 Cat::Cat(const Cat& other)
+	:	Animal(other)
 {
 	*this = other;
 	std::cerr << "Cat copied" << std::endl;

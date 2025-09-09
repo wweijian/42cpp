@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 13:33:14 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/05 09:21:28 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/04 14:42:16 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,19 @@
 Cat::Cat()
 {
 	type_ = "cat";
-	brain_ = new Brain();
 	std::cerr << "Cat constructed" << std::endl;	
 }
 
 Cat::Cat(const Cat& other)
+	:	Animal(other)
 {
 	*this = other;
-	brain_ = new Brain(*other.brain_);
 	std::cerr << "Cat copied" << std::endl;
 }
 
 Cat::~Cat()
 {
-	delete brain_;
-	std::cerr << "Cat destroyed" << std::endl;
+	std::cerr << "Cat destroyed" << std::endl;	
 }
 
 /* operators */
