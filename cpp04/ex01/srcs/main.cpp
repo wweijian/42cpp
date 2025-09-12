@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 13:38:53 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/05 10:34:25 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/05 08:14:33 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,19 @@ int main()
 	for (int i = 0; i < SIZE; i++) {
 		if (i % 2)
 			zoo[i] = new Dog();
-		if (!(i % 2))
+		else
 			zoo[i] = new Cat();
 	}
-	Dog upDog(*(dynamic_cast<const Dog*>(zoo[5])));
+
+	const Dog *temp = static_cast<const Dog*>(zoo[SIZE % 2]);
+	temp->getBrain()->setIdea("water is wet");
+	Dog upDog = *temp;
+	upDog.getBrain()->setIdea("water is not wet");
+	std::cout << "updog: " << upDog.getBrain()-> getIdeas(0);
+	std::cout << "temp: " << temp->getBrain()-> getIdeas(0);
+
 	for (int i = 0; i < SIZE; i++) {
 		delete zoo[i];
 	}
-	std::cout << "upDog says"; upDog.makeSound();
 	return 0;
 }

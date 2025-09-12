@@ -19,6 +19,7 @@ Dog::Dog()
 }
 
 Dog::Dog(const Dog& other)
+	:	Animal(other)
 {
 	*this = other;
 	std::cerr << "Dog copied" << std::endl;
@@ -32,8 +33,7 @@ Dog::~Dog()
 /* operators */
 Dog& Dog::operator=(const Dog& other)
 {
-	if (this != &other)
-	{
+	if (this != &other) {
 		type_ = other.type_;
 	}
 	return (*this);

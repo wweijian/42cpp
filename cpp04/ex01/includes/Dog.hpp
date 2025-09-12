@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:42:32 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/05 10:27:51 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/04 14:41:47 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 #include <iostream>
 #include "Animal.hpp"
-#include "Brain.hpp"
 
 class Dog : public Animal
 {
@@ -29,9 +28,9 @@ class Dog : public Animal
 
 		/* getters */
 		void 		makeSound() const;
-	
+
+	protected:
+
 	private:
-		/* variables */
-		Brain	*brain_;
 
 } ;

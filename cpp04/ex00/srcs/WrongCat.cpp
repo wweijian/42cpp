@@ -19,6 +19,7 @@ WrongCat::WrongCat()
 }
 
 WrongCat::WrongCat(const WrongCat& other)
+	:	WrongAnimal(other)
 {
 	*this = other;
 	std::cerr << "WrongCat copied" << std::endl;
@@ -32,8 +33,7 @@ WrongCat::~WrongCat()
 /* operators */
 WrongCat& WrongCat::operator=(const WrongCat& other)
 {
-	if (this != &other)
-	{
+	if (this != &other) {
 		type_ = other.type_;
 	}
 	return (*this);
