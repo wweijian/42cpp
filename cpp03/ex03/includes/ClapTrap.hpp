@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ClapTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/31 09:25:40 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/01 08:00:43 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/12 08:06:06 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ class	ClapTrap
 		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap& clapTrap);
 		ClapTrap& operator=(const ClapTrap& other);
-		~ClapTrap();
+		virtual ~ClapTrap();
 
 		/* functions */
 		void attack(const std::string& target);
