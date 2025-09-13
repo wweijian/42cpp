@@ -1,35 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Brain.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/04 15:04:53 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/13 20:01:00 by wjhoe            ###   ########.fr       */
+/*   Created: 2025/09/04 13:38:53 by weijian           #+#    #+#             */
+/*   Updated: 2025/09/13 21:31:39 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
+#include "Cat.hpp"
+#include "Dog.hpp"
+#include "WrongCat.hpp"
 
-#include <iostream>
+#define SIZE 10
 
-class Brain
+int main()
 {
-	public:
-		/* constructor */
-		Brain();
-		~Brain();
-		Brain(const Brain& other);
-		Brain& operator=(const Brain& other);
-
-		/* functions */
-		std::string	getIdeas() const;
-		std::string	getIdeas(int i) const;
-		void		setIdea(std::string); 
-
-	private:
-		/* variables */
-		std::string	_ideas[100];
-		int			_ideaCount;
-} ;
+	Animal* animal = new Dog();
+	animal->makeSound();
+	delete animal;
+}

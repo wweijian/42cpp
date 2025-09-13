@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 13:38:53 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/13 10:32:36 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/13 21:11:39 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,20 @@ int main()
 		else
 			zoo[i] = new Cat();
 	}
-
-	const Dog* upDog = static_cast<const Dog*> (zoo[1]);
+	
+	static_cast<const Dog*>(zoo[1])->getBrain()->setIdea("water is wet");
+	std::cout << static_cast<const Dog*>(zoo[1])->getBrain()->getIdeas(0) << std::endl;
+	const Dog* upDog = new Dog(*(static_cast<const Dog*> (zoo[1])));
+	upDog->getBrain()->setIdea("water is not wet");
+	std::cout << static_cast<const Dog*>(zoo[1])->getBrain()->getIdeas(0) << std::endl;
+	std::cout << upDog->getBrain()->getIdeas(0) << std::endl;
+	static_cast<const Dog*>(zoo[1])->getBrain()->setIdea("syau handsome");
+	upDog->getBrain()->setIdea("syau ugly");
+	std::cout << static_cast<const Dog*>(zoo[1])->getBrain()->getIdeas(1) << std::endl;
+	std::cout << upDog->getBrain()->getIdeas(1) << std::endl;
+	
 	upDog->makeSound();
+
 	for (int i = 0; i < SIZE; i++) {
 		delete zoo[i];
 	}

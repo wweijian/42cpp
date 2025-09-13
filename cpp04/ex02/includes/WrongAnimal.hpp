@@ -1,39 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongAnimal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/04 13:32:55 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/13 21:22:57 by wjhoe            ###   ########.fr       */
+/*   Created: 2025/09/04 08:57:16 by weijian           #+#    #+#             */
+/*   Updated: 2025/09/04 13:48:42 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
-#include "Animal.hpp"
-#include "Brain.hpp"
 
-class Cat : public Animal
+class WrongAnimal
 {
 	public:
 		/* constructors */
-		Cat();
-		Cat(const Cat& other);
-		~Cat();
+		WrongAnimal();
+		WrongAnimal(const WrongAnimal& other);
+		virtual ~WrongAnimal();
 
 		/* operators */
-		Cat& operator=(const Cat& other);
+		WrongAnimal& operator=(const WrongAnimal& other);
 
 		/* getters */
-		void 		makeSound() const;
-		Brain* 		getBrain() const;
-
+		std::string			getType() const ;
+		virtual void 		makeSound() const;
 
 	protected:
+		/* variables */
+		std::string	type_;
 
 	private:
-		Brain *_brain;
+
 } ;

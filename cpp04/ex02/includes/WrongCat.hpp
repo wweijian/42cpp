@@ -1,39 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Cat.hpp                                            :+:      :+:    :+:   */
+/*   WrongCat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 13:32:55 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/13 21:22:57 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/09/04 14:41:58 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
-#include "Animal.hpp"
-#include "Brain.hpp"
+#include "WrongAnimal.hpp"
 
-class Cat : public Animal
+class WrongCat : public WrongAnimal
 {
 	public:
 		/* constructors */
-		Cat();
-		Cat(const Cat& other);
-		~Cat();
+		WrongCat();
+		WrongCat(const WrongCat& other);
+		~WrongCat();
 
 		/* operators */
-		Cat& operator=(const Cat& other);
+		WrongCat& operator=(const WrongCat& other);
 
 		/* getters */
 		void 		makeSound() const;
-		Brain* 		getBrain() const;
-
 
 	protected:
 
 	private:
-		Brain *_brain;
+
 } ;
