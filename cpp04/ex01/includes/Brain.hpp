@@ -1,35 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Brain.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/04 13:38:53 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/13 10:32:36 by weijian          ###   ########.fr       */
+/*   Created: 2025/09/04 15:04:53 by weijian           #+#    #+#             */
+/*   Updated: 2025/09/13 08:40:03 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Cat.hpp"
-#include "Dog.hpp"
-#include "WrongCat.hpp"
+#pragma once
 
-#define SIZE 10
+#include <iostream>
 
-int main()
+class Brain
 {
-	const Animal* zoo[SIZE];
-	for (int i = 0; i < SIZE; i++) {
-		if (i % 2)
-			zoo[i] = new Dog();
-		else
-			zoo[i] = new Cat();
-	}
+	public:
+		/* constructor */
+		Brain();
+		~Brain();
+		Brain(const Brain& other);
+		Brain& operator=(const Brain& other);
 
-	const Dog* upDog = static_cast<const Dog*> (zoo[1]);
-	upDog->makeSound();
-	for (int i = 0; i < SIZE; i++) {
-		delete zoo[i];
-	}
-	return 0;
-}
+		/* functions */
+		std::string	getIdeas() const;
+		std::string	getIdeas(int i) const;
+		int			getIdeaCount() const;
+		void		setIdea(std::string); 
+
+	private:
+		/* variables */
+		std::string	_ideas[100];
+		int			_ideaCount;
+} ;
