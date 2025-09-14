@@ -34,6 +34,7 @@ WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other)
 	if (this != &other) {
 		type_ = other.type_;
 	}
+	std::cerr << "WrongAnimal assigned" << std::endl;
 	return (*this);
 }
 

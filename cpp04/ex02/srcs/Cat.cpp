@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 13:33:14 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/13 21:13:41 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/09/14 14:05:56 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@ Cat::Cat(const Cat& other)
 	:	Animal(other)
 {
 	type_ = other.getType();
-	_brain = new Brain();
+	_brain = new Brain(*(other.getBrain()));
 	std::cerr << "Cat copied" << std::endl;
 }
 
 Cat::~Cat()
 {
 	delete _brain;
-	std::cerr << "Cat destroyed" << std::endl;	
+	std::cerr << "Cat destroyed" << std::endl;
 }
 
 /* operators */

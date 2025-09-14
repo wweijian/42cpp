@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 09:06:32 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/04 14:34:24 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/14 15:30:14 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ Animal& Animal::operator=(const Animal& other)
 	if (this != &other) {
 		type_ = other.type_;
 	}
+	std::cerr << "Animal assigned" << std::endl;
 	return (*this);
 }
 

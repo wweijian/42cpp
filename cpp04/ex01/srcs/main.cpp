@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 13:38:53 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/13 21:11:39 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/09/14 14:03:50 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,12 @@ int main()
 	upDog->getBrain()->setIdea("syau ugly");
 	std::cout << static_cast<const Dog*>(zoo[1])->getBrain()->getIdeas(1) << std::endl;
 	std::cout << upDog->getBrain()->getIdeas(1) << std::endl;
-	
+
 	upDog->makeSound();
 
 	for (int i = 0; i < SIZE; i++) {
 		delete zoo[i];
 	}
+	delete upDog;
 	return 0;
 }

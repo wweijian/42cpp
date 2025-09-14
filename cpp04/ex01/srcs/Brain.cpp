@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 15:17:10 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/13 20:37:25 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/09/14 15:35:39 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ Brain::Brain()
 Brain::Brain(const Brain& other)
 {
 	*this = other;
-	for (int i = 0; i < 100; i++) {
+	for (int i = 0; i < other._ideaCount; i++) {
 		_ideas[i] = other._ideas[i];
-		_ideaCount = other._ideaCount;
 	}
+	_ideaCount = other._ideaCount;
 	std::cerr << "Brain copied" << std::endl;
 }
 
@@ -37,10 +37,11 @@ Brain::~Brain()
 Brain& Brain::operator=(const Brain& other)
 {
 	if (this != &other) {
-		for (int i = 0; i < 100; i++) {
+		for (int i = 0; i < other._ideaCount; i++) {
 			_ideas[i] = other._ideas[i];
 		}
 	}
+	_ideaCount = other._ideaCount;
 	return (*this);
 }
 
