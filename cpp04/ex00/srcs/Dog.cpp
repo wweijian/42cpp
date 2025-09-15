@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:43:59 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/04 14:42:41 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/15 18:26:35 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Dog::Dog()
 {
-	type_ = "dog";
+	type = "dog";
 	std::cerr << "Dog constructed" << std::endl;	
 }
 
@@ -34,7 +34,7 @@ Dog::~Dog()
 Dog& Dog::operator=(const Dog& other)
 {
 	if (this != &other) {
-		type_ = other.type_;
+		type = other.type;
 	}
 	return (*this);
 }

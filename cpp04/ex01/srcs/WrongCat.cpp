@@ -14,7 +14,7 @@
 
 WrongCat::WrongCat()
 {
-	type_ = "Wrongcat";
+	type = "Wrongcat";
 	std::cerr << "WrongCat constructed" << std::endl;	
 }
 
@@ -34,7 +34,7 @@ WrongCat::~WrongCat()
 WrongCat& WrongCat::operator=(const WrongCat& other)
 {
 	if (this != &other) {
-		type_ = other.type_;
+		type = other.type;
 	}
 	return (*this);
 }

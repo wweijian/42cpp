@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 13:33:14 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/14 14:05:56 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/09/15 18:29:32 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Cat::Cat()
 		: _brain()
 {
-	type_ = "Cat";
+	type = "Cat";
 	_brain = new Brain();
 	std::cerr << "Cat constructed" << std::endl;
 }
@@ -23,7 +23,7 @@ Cat::Cat()
 Cat::Cat(const Cat& other)
 	:	Animal(other)
 {
-	type_ = other.getType();
+	type = other.getType();
 	_brain = new Brain(*(other.getBrain()));
 	std::cerr << "Cat copied" << std::endl;
 }
@@ -38,7 +38,7 @@ Cat::~Cat()
 Cat& Cat::operator=(const Cat& other)
 {
 	if (this != &other) {
-		type_ = other.getType();
+		type = other.getType();
 		_brain = new Brain(*(other.getBrain()));
 	}
 	std::cerr << "Cat assignment operator" << std::endl;

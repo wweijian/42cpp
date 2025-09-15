@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 08:57:16 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/13 21:28:35 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/09/15 18:29:32 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ class Animal
 
 	protected:
 		/* variables */
-		std::string	type_;
+		std::string	type;
 
 	private:
 

@@ -31,7 +31,7 @@ class WrongAnimal
 
 	protected:
 		/* variables */
-		std::string	type_;
+		std::string	type;
 
 	private:
 

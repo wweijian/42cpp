@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 13:33:14 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/04 14:42:16 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/15 18:26:28 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 Cat::Cat()
 {
-	type_ = "cat";
+	type = "cat";
 	std::cerr << "Cat constructed" << std::endl;	
 }
 
@@ -34,7 +34,7 @@ Cat::~Cat()
 Cat& Cat::operator=(const Cat& other)
 {
 	if (this != &other) {
-		type_ = other.type_;
+		type = other.type;
 	}
 	return (*this);
 }

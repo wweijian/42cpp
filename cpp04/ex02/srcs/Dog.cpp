@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.cpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 12:43:59 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/14 14:01:46 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/09/15 18:29:32 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 Dog::Dog()
 		: _brain()
 {
-	type_ = "dog";
+	type = "dog";
 	_brain = new Brain();
 	std::cerr << "Dog constructed" << std::endl;
 }
@@ -23,7 +23,7 @@ Dog::Dog()
 Dog::Dog(const Dog& other)
 	:	Animal(other)
 {
-	type_ = other.getType();
+	type = other.getType();
 	_brain = new Brain(*(other.getBrain()));
 	std::cerr << "Dog copied" << std::endl;
 }
@@ -38,7 +38,7 @@ Dog::~Dog()
 Dog& Dog::operator=(const Dog& other)
 {
 	if (this != &other) {
-		type_ = other.getType();
+		type = other.getType();
 		_brain = new Brain(*(other.getBrain()));
 	}
 	std::cerr << "Dog assignment operator" << std::endl;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Animal.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/04 09:06:32 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/14 15:30:14 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/09/15 18:26:06 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ Animal::~Animal()
 Animal& Animal::operator=(const Animal& other)
 {
 	if (this != &other) {
-		type_ = other.type_;
+		type = other.type;
 	}
 	std::cerr << "Animal assigned" << std::endl;
 	return (*this);
@@ -41,7 +41,7 @@ Animal& Animal::operator=(const Animal& other)
 /* function */
 std::string	Animal::getType() const
 {
-	return (type_);
+	return (type);
 }
 
 void	Animal::makeSound() const

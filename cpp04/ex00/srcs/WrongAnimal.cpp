@@ -32,7 +32,7 @@ WrongAnimal::~WrongAnimal()
 WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other)
 {
 	if (this != &other) {
-		type_ = other.type_;
+		type = other.type;
 	}
 	std::cerr << "WrongAnimal assigned" << std::endl;
 	return (*this);
@@ -41,7 +41,7 @@ WrongAnimal& WrongAnimal::operator=(const WrongAnimal& other)
 /* function */
 std::string	WrongAnimal::getType() const
 {
-	return (type_);
+	return (type);
 }
 
 void	WrongAnimal::makeSound() const
