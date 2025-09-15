@@ -6,20 +6,11 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 11:16:36 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/15 16:42:06 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/15 18:44:18 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Character.hpp"
-#include "Cure.hpp"
-// #include "Ice.hpp"
-
-/* ICharacter */
-
-ICharacter::~ICharacter()
-{
-	std::cerr << "ICharacter destroyed" << std::endl;
-}
 
 /* constructors */
 

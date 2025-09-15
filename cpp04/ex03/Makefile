@@ -6,12 +6,12 @@
 #    By: weijian <weijian@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/04 13:48:07 by weijian           #+#    #+#              #
-#    Updated: 2025/09/15 15:10:19 by weijian          ###   ########.fr        #
+#    Updated: 2025/09/15 18:54:48 by weijian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # === NAME === #
-NAME		 = ex02
+NAME		 = ex03
 
 # === SRCS === #
 SRCS		= main.cpp
@@ -20,7 +20,7 @@ INCL_DIR	= includes/
 SRCS		:= $(addprefix ${SRCS_DIR},${SRCS})
 
 # === CLASS === #
-CL			= AMateria Character Cure Ice MateriaSource
+CL			= AMateria Character Cure Ice MateriaSource ICharacter IMateriaSource
 CL_SRCS		= $(addprefix ${SRCS_DIR},$(addsuffix .cpp,${CL}))
 CL_INCL		= $(addprefix ${INCL_DIR},$(addsuffix .hpp,${CL}))
 
@@ -44,7 +44,7 @@ ${NAME}: ${ALL_OBJS}
 ${OBJS}: ${OBJS_DIR}%.o: ${SRCS_DIR}%.cpp ${INCL_DIR} | ${OBJS_DIR}
 	${CC} ${CFLAGS} -c $< -o $@
 
-${CL_OBJS}: ${OBJS_DIR}%.o: ${SRCS_DIR}%.cpp ${INCL_DIR}%.hpp | ${OBJS_DIR}
+${CL_OBJS}: ${OBJS_DIR}%.o: ${SRCS_DIR}%.cpp ${INCL_DIR} | ${OBJS_DIR}
 	${CC} ${CFLAGS} -c $< -o $@
 
 # === DIRECTORY === #

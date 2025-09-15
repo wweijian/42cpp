@@ -6,28 +6,13 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 08:35:55 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/15 16:41:44 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/15 18:51:31 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
-#include <iostream>
-
-#include "AMateria.hpp"
-
-class AMateria;
-
-class ICharacter
-{
-	public:
-	virtual ~ICharacter();
-	
-	virtual std::string const& getName() const = 0;
-	virtual void equip(AMateria* m) = 0;
-	virtual void unequip(int idx) = 0;
-	virtual void use(int idx, ICharacter& target) = 0;
-} ;
+#include "ICharacter.hpp"
 
 class Character : public ICharacter
 {

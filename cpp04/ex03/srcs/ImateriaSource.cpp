@@ -1,33 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   MateriaSource.hpp                                  :+:      :+:    :+:   */
+/*   ImateriaSource.cpp                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/15 07:42:43 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/15 18:35:18 by weijian          ###   ########.fr       */
+/*   Created: 2025/09/15 18:36:04 by weijian           #+#    #+#             */
+/*   Updated: 2025/09/15 18:53:17 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#pragma once
-
-#include <iostream>
-
-#include "AMateria.hpp"
-#include "IMateriaSource.hpp"
-
-class MateriaSource : public IMateriaSource
-{
-	public:
-	MateriaSource();
-	MateriaSource(MateriaSource &other);
-	MateriaSource& operator=(MateriaSource &other);
-	~MateriaSource();
-
-	void 		learnMateria(AMateria* materia);
-	AMateria*	createMateria(std::string const & type);
-	
-	private:
-	AMateria*	_materiaSlot[4];
-} ;

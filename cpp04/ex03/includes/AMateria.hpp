@@ -6,14 +6,14 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 11:15:25 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/15 15:34:33 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/15 18:52:41 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
-#include "Character.hpp"
+#include "ICharacter.hpp"
 
 #define	CURE "cure"
 #define	ICE "ice"

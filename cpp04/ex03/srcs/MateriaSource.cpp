@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 13:02:00 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/15 16:54:47 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/15 18:54:25 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,6 @@ void 		MateriaSource::learnMateria(AMateria* materia)
 AMateria*	MateriaSource::createMateria(std::string const& type)
 {
 	for (int i = 0; i < 4; i++) {
-		std::cout << "here" << i << std::endl;
 		if (_materiaSlot[i] && _materiaSlot[i]->getType() == type) {
 			return(_materiaSlot[i]->clone());
 		}
