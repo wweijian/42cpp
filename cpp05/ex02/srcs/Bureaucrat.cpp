@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/18 19:10:23 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/18 21:52:39 by weijian          ###   ########.fr       */
+/*   Created: 2025/09/18 19:09:54 by weijian           #+#    #+#             */
+/*   Updated: 2025/09/18 21:54:43 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,27 @@ void	Bureaucrat::operator++()
 	_grade--;
 }
 
+/* functions */
+void	Bureaucrat::signForm(AForm& form)
+{
+	try {
+		form.beSigned(*this);
+	} catch (const std::exception &err) {
+		std::cerr << *this << " couldn't sign " << form.getName() << " because ";
+		std::cerr << RED(err.what()) << std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm(AForm const & form)
+{
+	try {
+		form.execute(*this);
+	} catch (const std::exception &err) {
+		std::cerr << *this << " couldn't execute " << form.getName() << " because ";
+		std::cerr << RED(err.what()) << std::endl;
+	}
+}
+
 /* getters */
 
 std::string	Bureaucrat::getName() const
@@ -112,6 +133,7 @@ int	Bureaucrat::getGrade() const
 	return (_grade);
 }
 
+/* exception */
 const char* Bureaucrat::GradeTooHighException::what() const throw()
 {
 	return ("Bureaucrat's grade is too high");
