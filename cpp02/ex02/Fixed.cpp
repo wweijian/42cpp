@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/24 17:08:05 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/05 15:43:54 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/09/18 08:51:41 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ bool Fixed::operator!=(const Fixed& other) const
 /* arithmetic */
 Fixed Fixed::operator+(const Fixed& other) const
 {
-	return Fixed(toFloat() + other.toFloat());
+	return Fixed(toFloat() + other.toFloat());¡
 }
 Fixed Fixed::operator-(const Fixed& other) const
 {
