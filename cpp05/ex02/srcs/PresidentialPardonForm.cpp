@@ -1,74 +1,64 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
+/*   PresidentialPardonForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 19:12:16 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/18 22:39:47 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/18 21:56:43 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
 
-ShrubberyCreationForm::ShrubberyCreationForm()
-	:	AForm("ShrubberyCreationForm", SCF_SIGN, SCF_EXEC, "home")
+PresidentialPardonForm::PresidentialPardonForm()
+	:	AForm("PresidentialPardonForm", PPF_SIGN, PPF_EXEC, "home")
 {
 	std::cerr << "Created : " << *this << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(std::string target)
-	:	AForm("ShrubberyCreationForm", SCF_SIGN, SCF_EXEC, target)
+PresidentialPardonForm::PresidentialPardonForm(std::string target)
+	:	AForm("PresidentialPardonForm", PPF_SIGN, PPF_EXEC, target)
 {
 	std::cerr << "Created : " << *this << std::endl;
 }
 
-ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& f)
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& f)
 	:	AForm(f.getName(), f.getMinSign(), f.getMinExec(), f.getTarget())
 {
 	std::cerr << "Copied : " << getName() << std::endl;
 }
 
-ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& other)
+PresidentialPardonForm& PresidentialPardonForm::operator=(const PresidentialPardonForm& other)
 {
 	if (this != &other) {
-		this->~ShrubberyCreationForm();
-		new (this) ShrubberyCreationForm(other);
+		this->~PresidentialPardonForm();
+		new (this) PresidentialPardonForm(other);
 		std::cerr << "Assigned : " << getName() << std::endl;
 	}
 	return (*this);
 }
 
-ShrubberyCreationForm::~ShrubberyCreationForm()
+PresidentialPardonForm::~PresidentialPardonForm()
 {
 	std::cerr << "Destroyed : " << getName() << std::endl;
 }
 
 /* functions */
 
-void ShrubberyCreationForm::execute(Bureaucrat const & executor) const
+void PresidentialPardonForm::execute(Bureaucrat const & executor) const
 {
 	if (!getSigned())
 		throw AForm::FormNotSigned();
 	if (executor.getGrade() > getMinExec())
 		throw AForm::GradeTooLowException();
 	std::cout << PURPLE(executor << " executed " << getName()) << std::endl;
-	ShrubberyCreationForm::makeTree();
+	PresidentialPardonForm::pardon();
 }
 
 /* make tree */
-void	ShrubberyCreationForm::makeTree() const
+void	PresidentialPardonForm::pardon() const
 {
-	std::ofstream	outfile;
-
-	outfile.open(getTarget() + "_shrubbery");
-	if (!outfile.is_open())
-	{
-		std::cout << "tree cannot be planted because the wife said no" << std::endl;
-		return ;
-	}
-	outfile << tree;
+	std::cout<< getTarget() << " has been pardoned by Zaphod Beeblebrox" << std::endl;
 }
-
-const std::string ShrubberyCreationForm::tree = "   *\n  ***\n *****\n*******\n  |||\n" ;

@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   RobotomyRequestForm.hpp                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 19:11:49 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/18 22:38:46 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/18 23:05:35 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+#include <cstdlib>
 #include "AForm.hpp"
-
 #include "Bureaucrat.hpp"
 
 /* macros */
-#define	SCF_SIGN 145
-#define SCF_EXEC 137
+#define	RRF_SIGN 72
+#define RRF_EXEC 45
 
 /* colors */
 #define BRACKET(os)	'[' << os << ']'
@@ -28,19 +28,19 @@
 #define GREEN(os)	"\e[32m" << os << "\e[0m"
 #define CYAN(os)	"\e[36m" << os << "\e[0m"
 
-class ShrubberyCreationForm : public AForm
+class RobotomyRequestForm : public AForm
 {
 	public:
-		ShrubberyCreationForm();
-		ShrubberyCreationForm(std::string target);
-		ShrubberyCreationForm(const ShrubberyCreationForm& f);
-		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
-		virtual ~ShrubberyCreationForm();
+		RobotomyRequestForm();
+		RobotomyRequestForm(std::string target);
+		RobotomyRequestForm(const RobotomyRequestForm& f);
+		RobotomyRequestForm& operator=(const RobotomyRequestForm& other);
+		virtual ~RobotomyRequestForm();
 
 	/* functions */
-		void						execute(Bureaucrat const & executor) const;
+		void	execute(Bureaucrat const & executor) const;
 
 	private:
-		void						makeTree() const;
-		static const std::string	tree;
+		void	robotomy() const;
+
 } ;

@@ -6,7 +6,7 @@
 #    By: weijian <weijian@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/18 10:01:29 by weijian           #+#    #+#              #
-#    Updated: 2025/09/18 21:42:08 by weijian          ###   ########.fr        #
+#    Updated: 2025/09/18 22:29:54 by weijian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ NAME		 = ex02
 SRCS_DIR	= srcs/
 INCL_DIR	= includes/
 
-CLASS		= Bureaucrat AForm ShrubberyCreationForm
+CLASS		= Bureaucrat AForm ShrubberyCreationForm \
+				RobotomyRequestForm PresidentialPardonForm
 INCL		= $(addprefix ${INCL_DIR},$(addsuffix .hpp,${CLASS}))
 SRCS		= $(addsuffix .cpp,${CLASS})
 SRCS		+= main.cpp

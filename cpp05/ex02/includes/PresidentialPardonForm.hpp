@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ShrubberyCreationForm.hpp                          :+:      :+:    :+:   */
+/*   PresidentialPardonForm.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 19:11:49 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/18 22:38:46 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/18 21:40:07 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 #include "Bureaucrat.hpp"
 
 /* macros */
-#define	SCF_SIGN 145
-#define SCF_EXEC 137
+#define	PPF_SIGN 25
+#define PPF_EXEC 5
 
 /* colors */
 #define BRACKET(os)	'[' << os << ']'
@@ -28,19 +28,18 @@
 #define GREEN(os)	"\e[32m" << os << "\e[0m"
 #define CYAN(os)	"\e[36m" << os << "\e[0m"
 
-class ShrubberyCreationForm : public AForm
+class PresidentialPardonForm : public AForm
 {
 	public:
-		ShrubberyCreationForm();
-		ShrubberyCreationForm(std::string target);
-		ShrubberyCreationForm(const ShrubberyCreationForm& f);
-		ShrubberyCreationForm& operator=(const ShrubberyCreationForm& other);
-		virtual ~ShrubberyCreationForm();
+		PresidentialPardonForm();
+		PresidentialPardonForm(std::string target);
+		PresidentialPardonForm(const PresidentialPardonForm& f);
+		PresidentialPardonForm& operator=(const PresidentialPardonForm& other);
+		virtual ~PresidentialPardonForm();
 
 	/* functions */
-		void						execute(Bureaucrat const & executor) const;
+		void	execute(Bureaucrat const & executor) const;
 
 	private:
-		void						makeTree() const;
-		static const std::string	tree;
+		void	pardon() const;
 } ;
