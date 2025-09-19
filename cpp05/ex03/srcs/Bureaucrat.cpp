@@ -1,0 +1,153 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/09/18 19:09:54 by weijian           #+#    #+#             */
+/*   Updated: 2025/09/18 21:54:43 by weijian          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "Bureaucrat.hpp"
+
+Bureaucrat::Bureaucrat()
+	:	_name("default"),
+		_grade(150)
+{
+	std::cerr << "Created :  " << YELLOW(*this) << std::endl;
+}
+
+Bureaucrat::Bureaucrat(std::string name, int grade)
+	:	_name(name),
+		_grade(grade)
+{
+	if (_grade > lowest) {
+		std::cerr << "Failed to create: " << YELLOW(*this) << ". ";
+		throw Bureaucrat::GradeTooLowException();
+	}
+	if (_grade < highest) {
+		std::cerr << "Failed to create: " << YELLOW(*this) << ". ";
+		throw Bureaucrat::GradeTooHighException();
+	}
+	std::cerr << "Created :  " << YELLOW(*this) << std::endl;
+}
+
+Bureaucrat::Bureaucrat(const Bureaucrat& other)
+	:	_name(other._name),
+		_grade(other._grade)
+{
+	std::cerr << "Copied :  " << YELLOW(*this) << std::endl;
+}
+
+// i should decide if this is wholly necessary
+Bureaucrat& Bureaucrat::operator=(const Bureaucrat& other)
+{
+	if (this != &other) {
+		this->~Bureaucrat();
+		new (this) Bureaucrat(other);
+		std::cerr << "Assigned :  " << YELLOW(*this) << std::endl;
+	}
+	return (*this);
+}
+
+Bureaucrat::~Bureaucrat()
+{
+	std::cerr << "Destroyed :  " << YELLOW(*this) << std::endl;
+}
+
+
+/* static variables */
+
+const int Bureaucrat::lowest = 150;
+const int Bureaucrat::highest = 1;
+
+/* increment decrement */
+void	Bureaucrat::decrementGrade()
+{
+	if (_grade == lowest) {
+		std::cerr << "Grade cannot be decremented. ";
+		throw Bureaucrat::GradeTooLowException();
+	}
+	_grade++;
+}
+
+void	Bureaucrat::incrementGrade()
+{
+	if (_grade == highest) {
+		std::cerr << "Grade cannot be incremented. ";
+		throw Bureaucrat::GradeTooHighException();
+	}
+	_grade--;
+}
+
+void	Bureaucrat::operator--()
+{
+	if (_grade == lowest) {
+		std::cerr << "Grade cannot be decremented. ";
+		throw Bureaucrat::GradeTooLowException();
+	}
+	_grade++;
+}
+
+void	Bureaucrat::operator++()
+{
+	if (_grade == highest) {
+		std::cerr << "Grade cannot be incremented. ";
+		throw Bureaucrat::GradeTooHighException();
+	}
+	_grade--;
+}
+
+/* functions */
+void	Bureaucrat::signForm(AForm& form)
+{
+	try {
+		form.beSigned(*this);
+	} catch (const std::exception &err) {
+		std::cerr << *this << " couldn't sign " << form.getName() << " because ";
+		std::cerr << RED(err.what()) << std::endl;
+	}
+}
+
+void	Bureaucrat::executeForm(AForm const & form)
+{
+	try {
+		form.execute(*this);
+	} catch (const std::exception &err) {
+		std::cerr << *this << " couldn't execute " << form.getName() << " because ";
+		std::cerr << RED(err.what()) << std::endl;
+	}
+}
+
+/* getters */
+
+std::string	Bureaucrat::getName() const
+{
+	return (_name);
+}
+
+int	Bureaucrat::getGrade() const
+{
+	return (_grade);
+}
+
+/* exception */
+const char* Bureaucrat::GradeTooHighException::what() const throw()
+{
+	return ("Bureaucrat's grade is too high");
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() 
+{
+	return ("Bureaucrat's grade is too low");
+}
+
+/* print */
+std::ostream& operator<<(std::ostream& os, const Bureaucrat& bureau)
+{
+	os << bureau.getName() << ", bureacrat grade: " << bureau.getGrade();
+	return (os);
+}
+

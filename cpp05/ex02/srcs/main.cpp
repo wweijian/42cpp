@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 19:10:37 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/18 23:07:09 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/19 08:14:15 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 #include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
+
+void	constructors()
+{
+	ShrubberyCreationForm	form1("copy");
+	ShrubberyCreationForm	form2(form1);
+		RobotomyRequestForm	form3("copy");
+		RobotomyRequestForm	form4(form3);
+	PresidentialPardonForm	form5("copy");
+	PresidentialPardonForm	form6(form5);
+
+}
 
 void	shrubs()
 {
@@ -77,5 +88,5 @@ int	main()
 	// shrubs();
 	// robotomy();
 	// robotomyRoulette();
-	pardon();
+	// pardon();
 }

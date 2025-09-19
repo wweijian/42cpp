@@ -6,12 +6,13 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 19:10:19 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/18 19:10:20 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/19 09:21:16 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
+// we won't try/catch for things we know will definitely succeed
 void	basic()
 {
 	Bureaucrat	sally;
