@@ -5,32 +5,28 @@
 #                                                     +:+ +:+         +:+      #
 #    By: weijian <weijian@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/09/18 10:01:29 by weijian           #+#    #+#              #
-#    Updated: 2025/09/19 19:24:41 by weijian          ###   ########.fr        #
+#    Created: 2025/08/20 22:48:09 by weijian           #+#    #+#              #
+#    Updated: 2025/09/19 21:52:25 by weijian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # === NAME === #
-NAME		 = convert
+NAME = ex00
 
-# === SRCS === #
-SRCS_DIR	= srcs/
-INCL_DIR	= includes/
+# === INCLUDES === #
+INCL = whatever.hpp
 
-CLASS		= ScalarConverter
-INCL		= $(addprefix ${INCL_DIR},$(addsuffix .hpp,${CLASS}))
-SRCS		= $(addsuffix .cpp,${CLASS})
-SRCS		+= main.cpp
-SRCS		:= $(addprefix ${SRCS_DIR},${SRCS})
+# === SOURCE === #
+SRCS = main.cpp
 
-# === OBJS === #
-OBJS_DIR	= objs/
-OBJS 		= $(SRCS:${SRCS_DIR}%.cpp=${OBJS_DIR}%.o)
+# === OBJECTS === #
+OBJS_DIR = objs/
+OBJS = $(addprefix ${OBJS_DIR},$(SRCS:%.cpp=%.o))
 
 # === COMPILATION === #
 CC			= c++
 VER			= -std=c++98
-CFLAGS		= -Wall -Werror -Wextra ${VER} -I${INCL_DIR}
+CFLAGS		= -Wall -Werror -Wextra ${VER}
 
 # === RULES === #
 all: ${NAME}
@@ -38,10 +34,8 @@ all: ${NAME}
 ${NAME}: ${OBJS}
 	${CC} ${CFLAGS} ${OBJS} -o $@
 
-${OBJS}: ${OBJS_DIR}%.o: ${SRCS_DIR}%.cpp ${INCL} | ${OBJS_DIR}
+${OBJS_DIR}%.o: ${SRCS_DIR}%.cpp ${INCL} | ${OBJS_DIR}
 	${CC} ${CFLAGS} -c $< -o $@
-
-# === DIRECTORY === #
 
 ${OBJS_DIR}:
 	mkdir -p $@

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.cpp                                          :+:      :+:    :+:   */
+/*   Data.cpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,47 +10,47 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "Data.hpp"
 
-/* constructors */
+/* constructor1s */
 
-Fixed::Fixed()
-	:	_fixedPointNumberValue(0)
+Data::Data()
+	:	_DataPointNumberValue(0)
 {
 	std::cout << "default constructor called" << std::endl;
 }
 
-Fixed::Fixed(const Fixed& fixed) // copy constructor
+Data::Data(const Data& Data) // copy constructor
 {
 	std::cout << "copy constructor called" << std::endl;
-	_fixedPointNumberValue = fixed.getRawBits();
+	_DataPointNumberValue = Data.getRawBits();
 }
 
-Fixed& Fixed::operator=(const Fixed &fixed) // assignment operator
+Data& Data::operator=(const Data &Data) // assignment operator
 {
 	std::cout << "copy assignment operator called" << std::endl;
-	if (this != &fixed) {
-		_fixedPointNumberValue = fixed.getRawBits();
+	if (this != &Data) {
+		_DataPointNumberValue = Data.getRawBits();
 	}
 	return *this;
 }
 
-Fixed::~Fixed()
+Data::~Data()
 {
 	std::cout << "destructor called" << std::endl;
 }
 
 /* static constants */
-const int	Fixed::_fractionalBits = 8;
+const int	Data::_fractionalBits = 8;
 
-int	Fixed::getRawBits() const
+int	Data::getRawBits() const
 {
 	std::cout << "getRawBits function called" << std::endl;
-	return (_fixedPointNumberValue);
+	return (_DataPointNumberValue);
 }
 
-void	Fixed::setRawBits(int const raw)
+void	Data::setRawBits(int const raw)
 {
 	std::cout << "setRawBits function called" << std::endl;
-	_fixedPointNumberValue = raw;
+	_DataPointNumberValue = raw;
 }

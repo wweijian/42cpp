@@ -6,18 +6,18 @@
 #    By: weijian <weijian@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/09/18 10:01:29 by weijian           #+#    #+#              #
-#    Updated: 2025/09/19 19:24:41 by weijian          ###   ########.fr        #
+#    Updated: 2025/09/19 20:26:10 by weijian          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # === NAME === #
-NAME		 = convert
+NAME		 = ex01
 
 # === SRCS === #
 SRCS_DIR	= srcs/
 INCL_DIR	= includes/
 
-CLASS		= ScalarConverter
+CLASS		= Serializer Data
 INCL		= $(addprefix ${INCL_DIR},$(addsuffix .hpp,${CLASS}))
 SRCS		= $(addsuffix .cpp,${CLASS})
 SRCS		+= main.cpp

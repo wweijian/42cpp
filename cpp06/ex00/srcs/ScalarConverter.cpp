@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 10:25:03 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/19 13:07:23 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/19 20:20:45 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,109 +37,247 @@ bool	ScalarConverter::isCharRange(int const & i)
 	return (i >= 0 && i <= 126);
 }
 
+bool	ScalarConverter::isDigit(int const & i)
+{
+	return (i >= '0' && i <= '9');
+}
+
+bool	ScalarConverter::isSign(int const & i)
+{
+	return (i == '-' || i == '+');
+}
+
 bool	ScalarConverter::isDisplayableChar(int const & i)
 {
 	return (i >= 32 && i <= 126);
 }
+
+bool	ScalarConverter::isInt(std::string const & str)
+{
+	std::string::const_iterator i;
+
+	for (i = str.begin(); i != str.end(); ++i) {
+		if (isSign(*i)) {
+			if (i != str.begin())
+				return (false);
+		}
+		else if (!isDigit(*i))
+			return(false);
+	}
+	try {
+		std::stoi(str);
+	} catch (std::exception &err) {
+		return (false);
+	}
+	return (true);
+}
+
+ScalarConverter::_type	ScalarConverter::isFloatOrDouble(std::string const & str)
+{
+	std::string::const_iterator	i;
+	int							dot = 0;
+	int							e = 0;
+	int							f = 0;
+
+	i = str.begin();
+	while (i != str.end()) {
+		if (*i == '.') {
+			if (i == str.begin()) 
+				return (NONE);
+			dot = i - str.begin();
+			i++;
+			break ;
+		}
+		else if (isSign(*i)) {
+			if (i != str.begin() || *(i + 1) == '.')
+				return (NONE);
+		}
+		else if (!isDigit(*i))
+			return(NONE);
+		i++;
+	}
+	if (!isDigit(str[dot + 1]) || dot == 0)
+		return (NONE);
+	while (i != str.end()) {
+		if (*i == 'e') {
+			if (e == 1 || !isSign(*(++i)) 
+				|| (isSign(str[0]) && str[2] != '.') 
+				|| (!isSign(str[0]) && str[1] != '.'))
+				return (NONE);
+			e = 1;
+		}
+		else if (*i == 'f') {
+			if (i + 1 != str.end())
+				return (NONE);
+			f = 1;
+			break ;
+		}
+		else if (!isDigit(*i))
+			return (NONE);
+		i++;
+	}
+	if (f) {
+		try {
+			std::stof(str);
+			return(FLOAT);
+		} catch (std::exception &err) {
+			return (NONE);
+		}
+	}
+	else {
+		try {
+			std::stod(str);
+			return (DBL);
+		} catch (std::exception &err) {
+			return (NONE);
+		}
+	}
+}
+
 
 bool	ScalarConverter::isPseudoLiteral(std::string const & str)
 {
 	return (str == "-inf" || str == "+inf" || str == "nan");
 }
 
+ScalarConverter::_type	ScalarConverter::checkType(std::string const & str)
+{
+	if (isPseudoLiteral(str))
+		return (PSEUDO);
+	if (isChar(str))
+		return (CHAR);
+	if (isInt(str))
+		return (INT);
+	return (isFloatOrDouble(str));
+}
+
+void	ScalarConverter::convertNone()
+{
+	std::cout	<< "invalid inputs.\n"
+				<< "usage: ./convert <string> \n"
+				<< "use C++ literals in its most common literal forms\n"
+				<< "char  :   'c' \n"
+				<< "int   : only digits within limits\n"
+				<< "double: use a single decimal (up to 6 places), numbers only e.g. 0.0f, within limits\n"
+				<< "float : use a single decimal (up to 6 places), use the letter f e.g. 0.0f, within limits\n"
+				<< std::endl;
+}
+
+void	ScalarConverter::convertPseudo(std::string const & str)
+{
+	std::cout << "char  :  " << "impossible" << std::endl;
+	std::cout << "int   :  " << "impossible" << std::endl;
+	std::cout << "double:  " << str << std::endl;
+	std::cout << "float :  " << str << std::endl;
+	std::cout << std::endl;
+}
+
+void	ScalarConverter::convertChar(std::string const & str)
+{
+	char	c = str[1];
+
+	std::cout << "(CHAR CONVERSION) input:  " << str << std::endl;
+	CONV_CHAR (c);
+	CONV_INT  (static_cast<int>(c));
+	CONV_DBL  (static_cast<double>(c), ".0");
+	CONV_FLOAT(static_cast<float>(c), ".0");
+}
+
+void	ScalarConverter::convertInt(std::string const & str)
+{
+	int	i = std::stoi(str);
+	bool	frac = (str.size() < 7);
+
+	std::cout << "(INT CONVERSION) input:  " << str << std::endl;
+	displayChar(i);
+	CONV_INT   (i);
+	if (frac) {
+		CONV_FLOAT (static_cast<float>(i), ".0");
+		CONV_DBL   (static_cast<double>(i), ".0");
+	}
+	else {
+		CONV_FLOAT (static_cast<float>(i), "");
+		CONV_DBL   (static_cast<double>(i), "");
+	}
+}
+
+void	ScalarConverter::convertDouble(std::string const & str)
+{
+	double	i = std::stod(str);
+	bool	frac = (i == std::floor(i) && str.size() < 7);
+
+	std::cout << "(DOUBLE CONVERSION) input:  " << str << std::endl;
+	displayChar(static_cast<int>(i));
+	if (i >= INT_MIN && i <= INT_MAX)
+		CONV_INT   (PRECISION_ERR);
+	else
+		CONV_INT   (OUT_OF_RANGE);
+	try {
+		std::stof(str);
+		if (frac)
+			CONV_FLOAT (static_cast<float>(i), ".0");
+		else
+			CONV_FLOAT (static_cast<float>(i), "");
+	} catch (std::exception &err) {
+		std::cout << "float :  " << OUT_OF_RANGE << std::endl;
+	}
+	if (frac)
+		CONV_DBL   (i, ".0");
+	else
+		CONV_DBL   (i, "");
+}
+
+void	ScalarConverter::convertFloat(std::string const & str)
+{
+	float	i = std::stof(str);
+	bool	frac = (i == std::floor(i) && str.size() < 7);
+
+	std::cout << "(FLOAT CONVERSION) input:  " << str << std::endl;
+	displayChar(static_cast<int>(i));
+	if (i >= FLOAT_TO_INT_MIN && i <= FLOAT_TO_INT_MAX)
+		CONV_INT   (static_cast<int>(i));
+	else if (i >= INT_MIN && i <= INT_MAX)
+		CONV_INT   (PRECISION_ERR);
+	else
+		CONV_INT   (OUT_OF_RANGE);
+	if (frac) {
+		CONV_FLOAT (i,".0");
+		CONV_DBL   (static_cast<double>(i), ".0");
+	}
+	else {
+		CONV_FLOAT (i,"");
+		CONV_DBL   (static_cast<double>(i), "");
+	}
+}
+
+void	ScalarConverter::displayChar(const int& i)
+{
+	if (isDisplayableChar(i))
+		CONV_CHAR(static_cast<char>(i));
+	else if (isCharRange(i))
+		NO_DISPLAY;
+	else
+		std::cout << "char  :  " << "impossible" << std::endl;	
+}
+
 void	ScalarConverter::convert(std::string const & str)
 {
-	convertToChar(str);
-	convertToInt(str);
-	convertToFloat(str);
-	convertToDouble(str);
-}
+	_type		type = checkType(str);
 
-void	ScalarConverter::convertToChar(std::string const & str)
-{
-	int	var;
-
-	std::cout << "char  :  " << std::flush;
-	if (isChar(str)) {
-		std::cout << str << std::endl;
-		return ;
-	}
-	if (isPseudoLiteral(str)) {
-		std::cout << "impossible" << std::endl;
-		return ;
-	}
-	try {
-		var = std::stoi(str);
-		if (isDisplayableChar(var))
-			std::cout << "'" << static_cast<char>(var) << "'" << std::endl;
-		else if (isCharRange(var)) 
-			std::cout << "not displayable" << std::endl;
-		else
-			std::cout << "impossible" << std::endl;
-	} catch (std::exception &err) {
-		std::cerr << err.what() << std::endl;
-	}
-}
-
-void	ScalarConverter::convertToInt(std::string const & str)
-{
-	int	var;
-
-	std::cout << "int   :  " << std::flush;
-	if (isChar(str)) {
-		std::cout << static_cast<int>(str[1]) << std::endl;
-		return ;
-	}
-	if (isPseudoLiteral(str)) {
-		std::cout << "impossible" << std::endl;
-		return ;
-	}
-	try {
-		var = std::stoi(str);
-		std::cout << var << std::endl;
-	} catch (std::exception &err) {
-		std::cerr << err.what() << std::endl;
-	}
-}
-
-void	ScalarConverter::convertToFloat(std::string const & str)
-{
-	float	var;
-
-	std::cout << "float :  " << std::flush;
-	if (isChar(str)) {
-		std::cout << static_cast<float>(str[1]) << ".0f" << std::endl;
-		return ;
-	}
-	if (isPseudoLiteral(str)) {
-		std::cout << str << std::endl;
-		return ;
-	}
-	try {
-		var = std::stof(str);
-		std::cout << var << "f" << std::endl;
-	} catch (std::exception &err) {
-		std::cerr << err.what() << std::endl;
-	}
-}
-
-void	ScalarConverter::convertToDouble(std::string const & str)
-{
-	double	var;
-
-	std::cout << "double:  " << std::flush;
-	if (isChar(str)) {
-		std::cout << static_cast<double>(str[1]) << std::endl;
-		return ;
-	}
-	if (isPseudoLiteral(str)) {
-		std::cout << str << std::endl;
-		return ;
-	}
-	try {
-		var = std::stod(str);
-		std::cout << var << std::endl;
-	} catch (std::exception &err) {
-		std::cerr << err.what() << std::endl;
+	switch (type) {
+		case (NONE):
+			return (convertNone());
+		case (PSEUDO):
+			return (convertPseudo(str));
+		case (CHAR):
+			return (convertChar(str));
+		case (INT):
+			return (convertInt(str));
+		case (DBL):
+			return (convertDouble(str));
+		case (FLOAT):
+			return (convertFloat(str));
+		default :
+			return ;
 	}
 }
