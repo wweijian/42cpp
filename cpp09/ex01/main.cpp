@@ -6,12 +6,13 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 20:19:32 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/21 21:47:03 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/21 22:04:50 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 
+// container used: list (adapted to stack)
 int main (int ac, char **av)
 {
 	if (ac != 2) {
