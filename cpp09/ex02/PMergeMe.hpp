@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 15:09:41 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/21 17:59:30 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/21 20:20:56 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 #include <iomanip>
 
 #define	PRINT(os)	std::cout << os << std::endl;
-#define	TIME(fn)	start = clock(); fn; time = static_cast<double>(clock() - start) / CLOCKS_PER_SEC * 1000000;
 #define	TRY(fn)		try {fn;} catch (std::exception &e) {PRINT(e.what());}
+#define	TIME(fn)	start = clock(); fn; time = static_cast<double>(clock() - start) / CLOCKS_PER_SEC * 1000000;
 
 class PMergeMe
 {
