@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 10:25:03 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/22 11:12:15 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/09/22 11:18:12 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,9 @@ bool	ScalarConverter::isInt(std::string const & str)
 			return(false);
 	}
 	try {
-		std::stoi(str);
+		int i = atol(str.c_str());
+		if (i < INT_MIN || i > INT_MAX)
+			throw std::out_of_range("outside of integer limits");
 	} catch (std::exception &err) {
 		return (false);
 	}
