@@ -60,6 +60,8 @@ void RobotomyRequestForm::execute(Bureaucrat const & executor) const
 /* make tree */
 void	RobotomyRequestForm::robotomy() const
 {
+	std::srand(std::time(0));
+
 	std::cout << "bzzzzt....bzzzzt....bzzzzt....bzzzzt...." << std::endl;
 	if (std::rand() % 2) {
 		std::cout << getTarget() << " has successfully been robotomized" << std::endl;	}

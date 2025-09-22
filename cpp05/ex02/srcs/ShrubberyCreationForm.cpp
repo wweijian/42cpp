@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ShrubberyCreationForm.cpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 19:12:16 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/18 22:39:47 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:33:43 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ShrubberyCreationForm::makeTree() const
 {
 	std::ofstream	outfile;
 
-	outfile.open(getTarget() + "_shrubbery");
+	outfile.open((getTarget() + "_shrubbery").c_str());
 	if (!outfile.is_open())
 	{
 		std::cout << "tree cannot be planted because the wife said no" << std::endl;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Intern.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 08:21:38 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/19 09:28:55 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:54:48 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ AForm*	Intern::makeForm(std::string formName, std::string target)
 			return (form);
 		}
 	}
-	std::cerr << "form was not created because" << std::endl;
+	std::cerr << "form was not created because " << std::flush;
 	throw Intern::FormDoesNotExist();
 }
 

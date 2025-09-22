@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 10:15:43 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/19 18:14:36 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/22 11:12:01 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@
 #define PRECISION_ERR			"precision error"
 #define FLOAT_TO_INT_MAX		16777216
 #define FLOAT_TO_INT_MIN		-16777216
+#define INT_MAX					std::numeric_limits<int>::max()
+#define INT_MIN					std::numeric_limits<int>::min()
 
 
 class ScalarConverter

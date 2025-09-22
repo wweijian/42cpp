@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 19:10:37 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/19 08:14:15 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:35:18 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,10 @@
 
 void	constructors()
 {
-	ShrubberyCreationForm	form1("copy");
-	ShrubberyCreationForm	form2(form1);
-		RobotomyRequestForm	form3("copy");
-		RobotomyRequestForm	form4(form3);
+	 ShrubberyCreationForm	form1("copy");
+	 ShrubberyCreationForm	form2(form1);
+	   RobotomyRequestForm	form3("copy");
+	   RobotomyRequestForm	form4(form3);
 	PresidentialPardonForm	form5("copy");
 	PresidentialPardonForm	form6(form5);
 
@@ -84,9 +84,13 @@ void	robotomyRoulette()
 
 int	main()
 {
-	// constructors();
-	// shrubs();
-	// robotomy();
-	// robotomyRoulette();
-	// pardon();
+	constructors();
+	std::cout << std::endl;
+	shrubs();
+	std::cout << std::endl;
+	robotomy();
+	std::cout << std::endl;
+	robotomyRoulette();
+	std::cout << std::endl;
+	pardon();
 }

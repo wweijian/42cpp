@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 19:10:19 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/19 09:21:16 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:10:48 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,20 +58,19 @@ void	decrement()
 		guy.decrementGrade();
 	} catch (const std::exception &err) {
 		std::cerr << "reducing grade..." << "\n";
-		std::cerr << RED(err.what()) << std::endl;
+		std::cerr << RED(BRACKET(err.what())) << std::endl;
 	}
 	std::cout << "new_grade: " << guy.getGrade() << std::endl;
 	try {
 		std::cerr << "reducing grade..." << "\n";
 		guy.decrementGrade();
 	} catch (const std::exception &err) {
-		std::cerr << RED(err.what()) << std::endl;
+		std::cerr << RED(BRACKET(err.what())) << std::endl;
 	}
 	std::cout << "new_grade: " << guy.getGrade() << std::endl;
 }
 
 void	increment()
-
 {
 	Bureaucrat	guy("guy", 2);
 	std::cout	<< "increment\n"
@@ -80,14 +79,14 @@ void	increment()
 		guy.incrementGrade();
 	} catch (const std::exception &err) {
 		std::cerr << "improving grade..." << "\n";
-		std::cerr << RED(err.what()) << std::endl;
+		std::cerr << RED(BRACKET(err.what())) << std::endl;
 	}
 	std::cout << "new_grade: " << guy.getGrade() << std::endl;
 	try {
 		std::cerr << "improving grade..." << "\n";
 		guy.incrementGrade();
 	} catch (const std::exception &err) {
-		std::cerr << RED(err.what()) << std::endl;
+		std::cerr << RED(BRACKET(err.what())) << std::endl;
 	}
 	std::cout << "new_grade: " << guy.getGrade() << std::endl;
 }
@@ -95,7 +94,10 @@ void	increment()
 int main()
 {
 	basic();
+	std::cout << std::endl;
 	invalid();
+	std::cout << std::endl;
 	increment();
+	std::cout << std::endl;
 	decrement();
 }

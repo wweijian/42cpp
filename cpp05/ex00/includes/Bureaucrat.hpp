@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 10:02:16 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/18 21:52:30 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:05:58 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ class Bureaucrat
 	/* increment decrement */
 		void				incrementGrade();
 		void				decrementGrade();
-		void				operator++();
-		void				operator--();
 
 	/* getters */
 		std::string			getName() const;

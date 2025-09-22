@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ScalarConverter.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 10:25:03 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/19 20:20:45 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/22 11:12:15 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ ScalarConverter::~ScalarConverter()
 
 bool	ScalarConverter::isChar(std::string const & str)
 {
-	return (str.size() == 3 && str.front() == '\'' && str.back() == '\'');
+	return (str.size() == 3 && *str.begin() == '\'' && *str.end() == '\'');
 }
 
 bool	ScalarConverter::isCharRange(int const & i)

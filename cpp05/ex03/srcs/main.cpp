@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 19:10:37 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/19 09:38:31 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:55:21 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ void	constructors()
 	Intern	intern2(intern1);
 	Intern	intern3;
 	intern3 = intern2;
-
-	
 }
 
 void	forms()
@@ -94,7 +92,7 @@ void	pardon()
 
 int	main()
 {
-	// constructors();
+	constructors();
 	forms();
 	shrubs();
 	robotomy();

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Bureaucrat.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 19:10:08 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/18 21:53:12 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:13:17 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,24 +74,6 @@ void	Bureaucrat::decrementGrade()
 }
 
 void	Bureaucrat::incrementGrade()
-{
-	if (_grade == highest) {
-		std::cerr << "Grade cannot be incremented. ";
-		throw Bureaucrat::GradeTooHighException();
-	}
-	_grade--;
-}
-
-void	Bureaucrat::operator--()
-{
-	if (_grade == lowest) {
-		std::cerr << "Grade cannot be decremented. ";
-		throw Bureaucrat::GradeTooLowException();
-	}
-	_grade++;
-}
-
-void	Bureaucrat::operator++()
 {
 	if (_grade == highest) {
 		std::cerr << "Grade cannot be incremented. ";

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/18 19:10:15 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/18 19:10:16 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/22 09:17:55 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,11 @@ void	invalid()
 	} catch (const std::exception &err) {
 		std::cerr << RED(BRACKET("the form " << err.what())) << std::endl;
 	}
+	try {
+		Form formX2("another bad form", 151, 1);
+	} catch (const std::exception &err) {
+		std::cerr << RED(BRACKET("the form " << err.what())) << std::endl;
+	}
 }
 
 void	signing()
@@ -55,6 +60,8 @@ void	signing()
 int	main()
 {
 	construction();
+	std::cout << std::endl;
 	invalid();
+	std::cout << std::endl;
 	signing();
 }
