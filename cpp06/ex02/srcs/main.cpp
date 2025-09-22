@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 21:17:46 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/19 21:40:08 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/22 12:52:40 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "A.hpp"
 #include "B.hpp"
 #include "C.hpp"
+#include <cstdlib>
 
 Base*	generate()
 {

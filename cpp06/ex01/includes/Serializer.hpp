@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   Serializer.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 20:27:39 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/19 20:33:13 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/22 12:50:27 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <cstdlib>
+#include <stdint.h> // required for uintptr
 #include "Data.hpp"
 
 class Serializer

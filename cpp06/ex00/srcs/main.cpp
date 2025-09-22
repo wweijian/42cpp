@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 12:42:19 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/22 12:41:55 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/09/22 12:51:23 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,13 +116,13 @@ void pseudo()
 
 void tests()
 {
-	// characters();
-	// integers();
-	// invalidInts();
-	// floats();
-	// invalidFloats();
-	// doubles();
-	// invalidDoubles();
+	characters();
+	integers();
+	invalidInts();
+	floats();
+	invalidFloats();
+	doubles();
+	invalidDoubles();
 	pseudo();
 }
 
