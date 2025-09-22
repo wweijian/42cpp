@@ -6,13 +6,14 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 10:15:43 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/22 11:12:01 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/09/22 12:29:34 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #pragma once
 
 #include <iostream>
+#include <sstream>
 #include <string>
 #include <cmath>
 #include <limits>
@@ -62,6 +63,7 @@ class ScalarConverter
 		static void			convertDouble(std::string const & str);
 		static void			convertFloat(std::string const & str);
 		static void			displayChar(const int& i);
+		static double		stringToD(std::string const & str);
 
 	/* booleans */
 		static bool			isChar(std::string const & str);

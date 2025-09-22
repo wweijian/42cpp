@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 10:25:03 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/22 11:18:12 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/09/22 12:43:11 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ ScalarConverter::~ScalarConverter()
 
 bool	ScalarConverter::isChar(std::string const & str)
 {
-	return (str.size() == 3 && *str.begin() == '\'' && *str.end() == '\'');
+	return (str.size() == 3 && *str.begin() == '\'' && *(str.end() - 1) == '\'');
 }
 
 bool	ScalarConverter::isCharRange(int const & i)
@@ -65,7 +65,7 @@ bool	ScalarConverter::isInt(std::string const & str)
 			return(false);
 	}
 	try {
-		int i = atol(str.c_str());
+		long i = atol(str.c_str());
 		if (i < INT_MIN || i > INT_MAX)
 			throw std::out_of_range("outside of integer limits");
 	} catch (std::exception &err) {
@@ -118,28 +118,16 @@ ScalarConverter::_type	ScalarConverter::isFloatOrDouble(std::string const & str)
 			return (NONE);
 		i++;
 	}
-	if (f) {
-		try {
-			std::stof(str);
-			return(FLOAT);
-		} catch (std::exception &err) {
-			return (NONE);
-		}
-	}
-	else {
-		try {
-			std::stod(str);
-			return (DBL);
-		} catch (std::exception &err) {
-			return (NONE);
-		}
-	}
+	if (f)
+		return(FLOAT);
+	else
+		return (DBL);
 }
 
 
 bool	ScalarConverter::isPseudoLiteral(std::string const & str)
 {
-	return (str == "-inf" || str == "+inf" || str == "nan");
+	return (str == "-inf" || str == "+inf" || str == "nan" || str == "-inff" || str == "+inff");
 }
 
 ScalarConverter::_type	ScalarConverter::checkType(std::string const & str)
@@ -158,7 +146,7 @@ void	ScalarConverter::convertNone()
 	std::cout	<< "invalid inputs.\n"
 				<< "usage: ./convert <string> \n"
 				<< "use C++ literals in its most common literal forms\n"
-				<< "char  :   'c' \n"
+				<< "char  : 'c' \n"
 				<< "int   : only digits within limits\n"
 				<< "double: use a single decimal (up to 6 places), numbers only e.g. 0.0f, within limits\n"
 				<< "float : use a single decimal (up to 6 places), use the letter f e.g. 0.0f, within limits\n"
@@ -169,8 +157,18 @@ void	ScalarConverter::convertPseudo(std::string const & str)
 {
 	std::cout << "char  :  " << "impossible" << std::endl;
 	std::cout << "int   :  " << "impossible" << std::endl;
-	std::cout << "double:  " << str << std::endl;
-	std::cout << "float :  " << str << std::endl;
+	if (str == "nan") {
+		std::cout << "double:  " << str << std::endl;
+		std::cout << "float :  " << str << std::endl;
+	}
+	else if (str == "+inf") {
+		std::cout << "double:  " << "+inff" << std::endl;
+		std::cout << "float :  " << "+inf" << std::endl;		
+	}
+	else {
+		std::cout << "double:  " << "-inff" << std::endl;
+		std::cout << "float :  " << "-inf" << std::endl;
+	}
 	std::cout << std::endl;
 }
 
@@ -187,7 +185,7 @@ void	ScalarConverter::convertChar(std::string const & str)
 
 void	ScalarConverter::convertInt(std::string const & str)
 {
-	int	i = std::stoi(str);
+	int		i = atoi(str.c_str());
 	bool	frac = (str.size() < 7);
 
 	std::cout << "(INT CONVERSION) input:  " << str << std::endl;
@@ -203,9 +201,18 @@ void	ScalarConverter::convertInt(std::string const & str)
 	}
 }
 
+double	ScalarConverter::stringToD(std::string const & str)
+{
+	std::istringstream	stream(str);
+	double				d;
+
+	stream >> d;
+	return (d);
+}
+
 void	ScalarConverter::convertDouble(std::string const & str)
 {
-	double	i = std::stod(str);
+	double	i = stringToD(str);
 	bool	frac = (i == std::floor(i) && str.size() < 7);
 
 	std::cout << "(DOUBLE CONVERSION) input:  " << str << std::endl;
@@ -214,24 +221,19 @@ void	ScalarConverter::convertDouble(std::string const & str)
 		CONV_INT   (PRECISION_ERR);
 	else
 		CONV_INT   (OUT_OF_RANGE);
-	try {
-		std::stof(str);
-		if (frac)
-			CONV_FLOAT (static_cast<float>(i), ".0");
-		else
-			CONV_FLOAT (static_cast<float>(i), "");
-	} catch (std::exception &err) {
-		std::cout << "float :  " << OUT_OF_RANGE << std::endl;
-	}
-	if (frac)
+	if (frac) {
+		CONV_FLOAT (static_cast<float>(i), ".0");
 		CONV_DBL   (i, ".0");
-	else
+	}
+	else {
+		CONV_FLOAT (static_cast<float>(i), "");
 		CONV_DBL   (i, "");
+	}
 }
 
 void	ScalarConverter::convertFloat(std::string const & str)
 {
-	float	i = std::stof(str);
+	float	i = atof(str.c_str());
 	bool	frac = (i == std::floor(i) && str.size() < 7);
 
 	std::cout << "(FLOAT CONVERSION) input:  " << str << std::endl;
