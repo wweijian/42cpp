@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 11:16:36 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/15 18:44:18 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/15 19:49:08 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 Character::Character()
 {
 	for (int i = 0; i < 4; i++)
-		_materiaSlot[i] = nullptr;
+		_materiaSlot[i] = NULL;
 	std::cerr << "Character Constructed" << std::endl;
 }
 
@@ -25,7 +25,7 @@ Character::Character(std::string const name)
 			:	_name(name)
 {
 	for (int i = 0; i < 4; i++)
-		_materiaSlot[i] = nullptr;
+		_materiaSlot[i] = NULL;
 	std::cerr << "Character Constructed" << std::endl;
 }
 
@@ -33,8 +33,8 @@ Character::Character(Character& other)
 {
 	this->_name = other._name;
 	for (int i = 0; i < 4; i++) {
-		if (other._materiaSlot[i] == nullptr)
-			_materiaSlot[i] = nullptr;
+		if (other._materiaSlot[i] == NULL)
+			_materiaSlot[i] = NULL;
 		else
 			_materiaSlot[i] = other._materiaSlot[i]->clone();
 	}
@@ -46,8 +46,8 @@ Character& Character::operator=(Character& other)
 	if (this != &other) {
 		this->_name = other._name;
 		for (int i = 0; i < 4; i++) {
-			if (other._materiaSlot[i] == nullptr)
-				_materiaSlot[i] = nullptr;
+			if (other._materiaSlot[i] == NULL)
+				_materiaSlot[i] = NULL;
 			else
 				_materiaSlot[i] = other._materiaSlot[i]->clone();
 		}
@@ -59,7 +59,7 @@ Character& Character::operator=(Character& other)
 Character::~Character()
 {
 	for (int i = 0; i < 4; i++) {
-		if (_materiaSlot[i] != nullptr)
+		if (_materiaSlot[i] != NULL)
 			delete _materiaSlot[i];
 	}
 	std::cerr << "Character Destroyed" << std::endl;
@@ -77,14 +77,14 @@ void	Character::equip(AMateria* m)
 		std::cout << "materia does not exist" << std::endl;
 		return ;
 	}
-	
 	for (int i = 0; i < 4; i++) {
 		if (_materiaSlot[i] == m) {
 			std::cout << "materia is already equipped" << std::endl;
 			return ;
 		}
-		if (_materiaSlot[i] == nullptr) {
+		if (_materiaSlot[i] == NULL) {
 			_materiaSlot[i] = m;
+			std::cout << "materia equipped" << std::endl;
 			break ;
 		}
 		if (i == 3)
@@ -96,13 +96,8 @@ void	Character::unequip(int idx)
 {
 	if (idx >= 0 && idx < 4 && this->_materiaSlot[idx])
 	{
-		for (int i = 0; true; i++) {
-			if (_unequipped[i] == nullptr) {
-				_unequipped[i] = this->_materiaSlot[idx];
-				break;
-			}
-		}
-		_materiaSlot[idx] = nullptr;
+		std::cout << "materia unequipped" << std::endl;
+		_materiaSlot[idx] = NULL;
 	}
 	else
 		std::cout << "materia does not exist" << std::endl;
@@ -111,10 +106,17 @@ void	Character::unequip(int idx)
 
 void	Character::use(int idx, ICharacter& target)
 {
-	if (idx < 0 || idx > 3 || _materiaSlot[idx] == nullptr) {
-		std::cout << "materia does not exist" << std::endl;
+	if (idx < 0 || idx > 3 || _materiaSlot[idx] == NULL) {
+		std::cout << "[use] materia does not exist" << std::endl;
 		return ;
 	}
 	std::cout << _name;
 	_materiaSlot[idx]->use(target);
+}
+
+AMateria* Character::getMateria(int idx)
+{
+	if (idx >= 0 && idx < 4 && _materiaSlot[idx])
+		return (_materiaSlot[idx]);
+	return (0);
 }

@@ -17,6 +17,30 @@ int main()
 	ICharacter* bob = new Character("bob");
 	me->use(0, *bob);
 	me->use(1, *bob);
+	
+	/* equip way too many */
+		// tmp = src->createMateria("cure");
+		// me->equip(tmp);
+		// tmp = src->createMateria("cure");
+		// me->equip(tmp);
+		// tmp = src->createMateria("cure");
+		// me->equip(tmp);
+
+	/* unequipping */
+		// tmp = (static_cast<Character *>(me))->getMateria(0);
+		// me->unequip(0);
+		// me->unequip(3); // item not given
+		// delete tmp;
+
+	/* using unequipped */
+		// me->use(2, *bob);
+
+	/* NULL materia */
+		// std::cout << "HERE"<< std::endl;
+		// src->learnMateria(NULL);
+		// tmp = src->createMateria("hello");
+
+
 	delete bob;
 	delete me;
 	delete src;

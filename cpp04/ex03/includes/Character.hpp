@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Character.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/15 08:35:55 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/15 18:51:31 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/15 19:38:06 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,13 @@ class Character : public ICharacter
 
 	/* functions */
 	std::string const&	getName() const;
-	virtual void		equip(AMateria* m);
-	virtual void		unequip(int idx);
-	virtual void		use(int idx, ICharacter& target);
+	void				equip(AMateria* m);
+	void				unequip(int idx);
+	void				use(int idx, ICharacter& target);
+	AMateria*			getMateria(int i);
 
 	private:
 	/* variables */
 	std::string			_name;
 	AMateria*			_materiaSlot[4];
-	AMateria*			_unequipped[];
 } ;
