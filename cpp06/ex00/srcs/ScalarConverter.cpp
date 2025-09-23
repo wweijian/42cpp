@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 10:25:03 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/22 12:43:11 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/09/23 14:09:50 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,8 +158,8 @@ void	ScalarConverter::convertPseudo(std::string const & str)
 	std::cout << "char  :  " << "impossible" << std::endl;
 	std::cout << "int   :  " << "impossible" << std::endl;
 	if (str == "nan") {
-		std::cout << "double:  " << str << std::endl;
-		std::cout << "float :  " << str << std::endl;
+		std::cout << "double:  " << "nan" << std::endl;
+		std::cout << "float :  " << "nanf" << std::endl;
 	}
 	else if (str == "+inf") {
 		std::cout << "double:  " << "+inff" << std::endl;
