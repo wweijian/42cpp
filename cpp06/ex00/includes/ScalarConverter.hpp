@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 10:15:43 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/22 12:29:34 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/09/23 11:03:37 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,14 @@
 class ScalarConverter
 {
 	public:
+		static void		convert(std::string const & str);
+	
+	private:
+	/* constructors */
 		ScalarConverter();
 		ScalarConverter(const ScalarConverter& sc);
 		ScalarConverter& operator=(const ScalarConverter& sc);
 		~ScalarConverter();
-
-		static void		convert(std::string const & str);
-		virtual void	dummy() = 0;
-	
-	private:
 	/* enum */
 		typedef enum e_type {
 			NONE,

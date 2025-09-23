@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 21:17:46 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/22 12:52:40 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/09/23 11:02:51 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ Base*	generate()
 
 void identify(Base* p)
 {
+	if (!p)
+		std::cout << "this is NULL" << std::endl;
 	if (dynamic_cast<A *>(p))
 		std::cout << "this is A" << std::endl;
 	if (dynamic_cast<B *>(p))
