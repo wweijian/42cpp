@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 22:48:29 by weijian           #+#    #+#             */
-/*   Updated: 2025/10/21 16:44:11 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/10/21 20:15:39 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ template <typename T>
 Array<T>& Array<T>::operator=(const Array& arr)
 {
 	if (this != &arr) {
-		delete array;
+		delete[] array;
 		array = arr.copyArray();
 		size = arr.getSize();
 	}
@@ -52,6 +52,14 @@ Array<T>& Array<T>::operator=(const Array& arr)
 
 template <typename T> 
 T& Array<T>::operator[](unsigned int n)
+{
+	if (n >= size)
+		throw OutOfBounds();
+	return (array[n]);
+}
+
+template <typename T> 
+const T& Array<T>::operator[](unsigned int n) const
 {
 	if (n >= size)
 		throw OutOfBounds();
@@ -76,7 +84,7 @@ const char*	Array<T>::OutOfBounds::what () const throw ()
 template <typename T>
 T*	Array<T>::copyArray() const
 {
-	T*	arr[size] = new T[size];
+	T*	arr = new T[size];
 	for (unsigned int i = 0; i < size; i++) {
 		arr[i] = array[i];
 	}

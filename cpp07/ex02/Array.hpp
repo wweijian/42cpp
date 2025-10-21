@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 22:39:55 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/19 23:38:07 by weijian          ###   ########.fr       */
+/*   Updated: 2025/10/21 20:12:18 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ class Array
 		Array(unsigned int n);
 		Array& operator=(const Array& arr);
 		T& operator[](unsigned int n);
+		const T& operator[](unsigned int n) const;
+
 		~Array();
 	
 	/* getters */
