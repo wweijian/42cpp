@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.cpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 07:41:25 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/21 14:13:36 by weijian          ###   ########.fr       */
+/*   Updated: 2025/09/29 20:18:37 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ bool	BitcoinExchange::validDate(std::string line, int n)
 	int		year(std::stoi(line));
 	int		month(std::stoi(line.substr(4)));
 	int		day(std::stoi(line.substr(8)));
-	bool	leap = (year % 4 == 0);
+	bool	leap = (year % 4 == 0 && year % 400 != 0);
 	int		totalDays = 31;
 
 	if (month > 12)

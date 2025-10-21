@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Array.tpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/19 22:48:29 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/19 23:38:11 by weijian          ###   ########.fr       */
+/*   Updated: 2025/10/21 16:44:11 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,9 @@ Array<T>::Array(unsigned int n)
 		:	size(n)
 {
 	array = new T[n];
+	for (unsigned int i = 0; i < n; i++) {
+		array[i] = T();
+	}
 	std::cout << "Array is constructed" << std::endl;
 }
 
@@ -58,7 +61,7 @@ T& Array<T>::operator[](unsigned int n)
 template <typename T> 
 Array<T>::~Array()
 {
-	delete this->array;
+	delete[] this->array;
 	std::cout << "Array is destroyed" << std::endl;	
 }
 
@@ -74,7 +77,7 @@ template <typename T>
 T*	Array<T>::copyArray() const
 {
 	T*	arr[size] = new T[size];
-	for (int i = 0; i < size; i++) {
+	for (unsigned int i = 0; i < size; i++) {
 		arr[i] = array[i];
 	}
 	return (arr);
