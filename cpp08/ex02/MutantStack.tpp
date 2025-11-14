@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   MutantStack.tpp                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/20 20:44:32 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/20 21:40:36 by weijian          ###   ########.fr       */
+/*   Updated: 2025/11/14 09:43:02 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,18 @@ typename MutantStack<T>::iterator	MutantStack<T>::begin()
 
 template <typename T>
 typename MutantStack<T>::iterator	MutantStack<T>::end()
+{
+	return (this->c.end());
+}
+
+template <typename T>
+typename MutantStack<T>::const_iterator	MutantStack<T>::begin() const
+{
+	return (this->c.begin());
+}
+
+template <typename T>
+typename MutantStack<T>::const_iterator	MutantStack<T>::end() const
 {
 	return (this->c.end());
 }
