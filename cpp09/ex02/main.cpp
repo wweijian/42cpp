@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 15:27:11 by weijian           #+#    #+#             */
-/*   Updated: 2025/11/15 13:38:25 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/11/15 18:19:30 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ std::string printSorted(std::multiset<int> ms)
 	std::stringstream os;
 	
 	for (std::multiset<int>::iterator it = ms.begin(); it != ms.end(); it++)
-		os << *it << " " << std::endl;
+		os << *it << " ";
 	return (os.str());
 }
 
@@ -47,20 +47,23 @@ int main (int ac, char **av)
 		return 1;
 	}
 
-	int					num;
-	std::vector<int>		v[ac];
-	std::deque<int>			d[ac];
-	std::multiset<int>		m;
+	int						num;
+	std::vector<std::vector<int> >		v;
+	std::deque<std::deque<int> >		d;
+	std::multiset<int>					m;
 
 	try {
 		for (int i = 1; i < ac; i++) {
 			num = getNumber(av[i]);
-			v[i - 1] = std::vector<int>(1, num);
-			d[i - 1] = std::deque<int>(1, num);
+			v.push_back(std::vector<int>(1, num));
+			d.push_back(std::deque<int>(1, num));
 			m.insert(num);
 		}
-		std::cout << "Before:" << printContainer(v, ac - 1) << std::endl;
-		std::cout << "After :" << printSorted(m) << std::endl;
+		std::cout << "Before: " << printContainer(v, ac - 1) << std::endl;
+		std::cout << "After : " << printSorted(m) << std::endl;
+		PMergeMe pm(v, d);
+		std::cout << "\n\n\n\n" ;
+		pm.printLists();
 	} catch (std::exception &err) {
 			std::cerr << err.what() << std::endl;
 	}

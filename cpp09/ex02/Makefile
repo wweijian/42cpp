@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: weijian <weijian@student.42.fr>            +#+  +:+       +#+         #
+#    By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/08/20 22:48:09 by weijian           #+#    #+#              #
-#    Updated: 2025/09/21 17:31:52 by weijian          ###   ########.fr        #
+#    Updated: 2025/11/15 17:57:41 by wjhoe            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ OBJS = $(addprefix ${OBJS_DIR},$(SRCS:%.cpp=%.o))
 # === COMPILATION === #
 CC			= c++
 VER			= -std=c++98
-CFLAGS		= -g -Wall -Werror -Wextra ${VER}
+CFLAGS		= -g -Wall -Werror -Wextra ${VER} # -pedantic-errors
 
 # === RULES === #
 all: ${NAME}
