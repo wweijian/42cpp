@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 15:27:11 by weijian           #+#    #+#             */
-/*   Updated: 2025/11/14 14:58:50 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/11/15 13:38:25 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,27 +31,36 @@ int	getNumber(char *av)
 	return (num);
 }
 
+std::string printSorted(std::multiset<int> ms)
+{
+	std::stringstream os;
+	
+	for (std::multiset<int>::iterator it = ms.begin(); it != ms.end(); it++)
+		os << *it << " " << std::endl;
+	return (os.str());
+}
+
 int main (int ac, char **av)
 {
-	if (ac == 1) {
-		PRINT("usage: ./PMergeMe n1 ... (positive integers only)");
+	if (ac == 1 || ac > 3001) {
+		PRINT("usage: ./PMergeMe n1 ... (up to 3000 positive integers only)");
 		return 1;
 	}
-	
+
 	int					num;
-	std::vector<int>	v;
-	std::deque<int>		d;
-	std::multiset<int>	m;
+	std::vector<int>		v[ac];
+	std::deque<int>			d[ac];
+	std::multiset<int>		m;
 
 	try {
 		for (int i = 1; i < ac; i++) {
 			num = getNumber(av[i]);
-			v.push_back(num);
-			d.push_back(num);
+			v[i - 1] = std::vector<int>(1, num);
+			d[i - 1] = std::deque<int>(1, num);
 			m.insert(num);
 		}
-		std::cout << "Before:" << printContainer(v) << std::endl;
-		std::cout << "After :" << printContainer(m) << std::endl;
+		std::cout << "Before:" << printContainer(v, ac - 1) << std::endl;
+		std::cout << "After :" << printSorted(m) << std::endl;
 	} catch (std::exception &err) {
 			std::cerr << err.what() << std::endl;
 	}

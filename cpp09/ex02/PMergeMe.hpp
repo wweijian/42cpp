@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 15:09:41 by weijian           #+#    #+#             */
-/*   Updated: 2025/11/14 15:06:23 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/11/15 15:11:24 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class PMergeMe
 	public:
 	/* constructors */
 		PMergeMe();
-		PMergeMe(std::vector<int>, std::deque<int>);
+		PMergeMe(std::vector<void *>, std::deque<void *>);
 		PMergeMe(const PMergeMe &other);
 		PMergeMe& operator=(const PMergeMe &other);
 		~PMergeMe();
@@ -42,26 +42,27 @@ class PMergeMe
 
 	private:
 	/* variables */
-		std::vector<int>	_vec;
-		std::deque<int>		_deque;
+		std::vector<void *>	_vec;
+		std::deque<void *>	_deque;
 
 	/* type redefinition */
 		typedef std::string::iterator	iterator;
 
 	/* functions */
-
+		template <template <typename, typename> class C>
+		static void	sort (C<void *, std::allocator<void *> >& container);
 } ;
 
+/* print container */
 template <typename C>
-std::string printContainer(C container)
+std::string printContainer(C* container, int count)
 {
 	std::stringstream os;
 
-	for (typename C::iterator it = container.begin(); it != container.end();
-			it++) {
-		if (it != container.begin())
+	for (int i = 0; i < count; i++) {
+		if (i != 0)
 			os << " ";
-		os << *it;
+		os << container[i][0] << std::endl;
 	}
 	return (os.str());
 }
