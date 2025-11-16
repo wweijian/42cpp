@@ -108,8 +108,8 @@ void	PM::insertPend(C& main, C& pend)
 		}
 	}
 	if (pend.size() == 1) {
-		main.insert(main.begin(), *found);
-		pend.erase(found);
+		main.insert(insertLocation(main,pend[0][0]), pend[0]);
+		pend.erase(pend.begin());
 	}
 }
 
