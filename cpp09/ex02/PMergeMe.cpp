@@ -100,6 +100,10 @@ void	PM::insertPend(C& main, C& pend)
 			pend.erase(found);
 		}
 	}
+	if (pend.size() == 1) {
+		main.insert(main.begin(), *found);
+		pend.erase(found);
+	}
 }
 
 #define FIRST container[i]
