@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 15:27:11 by weijian           #+#    #+#             */
-/*   Updated: 2025/11/15 18:19:30 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/11/15 22:36:55 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,12 @@ int	getNumber(char *av)
 	return (num);
 }
 
-std::string printSorted(std::multiset<int> ms)
+template <typename C>
+std::string printSorted(C ms)
 {
 	std::stringstream os;
 	
-	for (std::multiset<int>::iterator it = ms.begin(); it != ms.end(); it++)
+	for (typename C::iterator it = ms.begin(); it != ms.end(); it++)
 		os << *it << " ";
 	return (os.str());
 }
@@ -48,18 +49,19 @@ int main (int ac, char **av)
 	}
 
 	int						num;
-	std::vector<std::vector<int> >		v;
-	std::deque<std::deque<int> >		d;
+	std::vector<int>		v;
+	std::deque<int>			d;
 	std::multiset<int>					m;
 
 	try {
 		for (int i = 1; i < ac; i++) {
 			num = getNumber(av[i]);
-			v.push_back(std::vector<int>(1, num));
-			d.push_back(std::deque<int>(1, num));
+			v.push_back(num);
+			d.push_back(num);
 			m.insert(num);
 		}
-		std::cout << "Before: " << printContainer(v, ac - 1) << std::endl;
+		std::cout << "Element Count: " << v.size() << std::endl;
+		std::cout << "Before: " << printSorted(v) << std::endl;
 		std::cout << "After : " << printSorted(m) << std::endl;
 		PMergeMe pm(v, d);
 		std::cout << "\n\n\n\n" ;

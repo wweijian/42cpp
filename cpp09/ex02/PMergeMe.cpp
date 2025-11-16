@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PMergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
+/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 15:29:01 by weijian           #+#    #+#             */
-/*   Updated: 2025/11/15 18:29:18 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/11/16 13:57:31 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 PMergeMe::PMergeMe()
 {}
 
-PMergeMe::PMergeMe(std::vector<std::vector<int> > v, std::deque<std::deque<int> > d)
-	:	_vec(v),
-		_deque(d)
+PMergeMe::PMergeMe(std::vector<int> v, std::deque<int> d)
+	:	_vec(sort(v)),
+		_deque()
 {
-	sort(_vec);
+	(void) d;
 }
 
 PM::PM(const PM &other)
@@ -43,26 +43,89 @@ PM::~PM()
 void	PM::printLists()
 {
 	for (size_t i = 0; i < _vec.size(); i++) {
-		std::cout << _vec[i][0] << " ";
+		std::cout << _vec[i] << " ";
 	};
 	std::cout << std::endl;
 }
 
-template <typename C>
-void	PM::sort(C& container)
+template <template <typename, typename> class Cont>
+Cont<int, std::allocator<int> > PM::sort(const Cont<int, std::allocator<int> >& src)
 {
-	std::cout << "sort " << std::endl;
+	typedef Cont<int, std::allocator<int> > Inner;
+	typedef Cont<Inner, std::allocator<Inner> > Outer;
+
+	Outer graph;
+	Inner dst;
+
+	for (size_t i = 0; i < src.size(); ++i)
+		graph.push_back(Inner(1, src[i]));
+	recurse(graph);
+	for (size_t i = 0; i < graph.size(); ++i)
+		dst.push_back(graph[i][0]);
+	return dst;
+}
+
+template <typename C>
+typename C::iterator	PM::findNode(C& pend, int find)
+{
+	PRINT("\nFUNCTION CALL: find");
+	PRINT("pend: " << printContainer(pend));
+	std::cout << "find : " << find << std::endl;
+	for (typename C::iterator it = pend.begin(); it != pend.end(); it++) {
+		std::cout << (*it)[0] << std::endl;
+		if ((*it)[0] == find) {
+			std::cout << "found!" << std::endl; 
+			return (it);
+		}
+	}
+	PRINT("end returned");
+	return (pend.end());
+}
+
+template <typename C>
+void	PM::insertPend(C& main, C& pend)
+{
+	PRINT("\nFUNCTION CALL: insertPend");
+	// std::cout << "[main] " << printContainer(main) << std::endl;
+	// std::cout << "[pend] " << printContainer(pend) << std::endl;
+	typename C::iterator	found; 
+	for (size_t i = 0; pend.size() > 0; i++) {
+		std::cout	<< "i: " << i << "\t" 
+					<< main[2 * i][1] << std::endl
+					<< "pend size: " << pend.size() << std::endl;
+		found = findNode(pend, main[2 * i][1]);
+		if (found != pend.end()) {
+			main[2 + i].erase(main[2 + i].begin() + 1);
+			main.insert(main.begin(), *found);
+			pend.erase(found);
+		}
+	}
+}
+
+#define FIRST container[i]
+#define SECOND container[i + 1]
+template <typename C>
+void	PM::recurse(C& container)
+{
+	PRINT("\nFUNCTION CALL: SORT");
 	if (container.size() < 2)
 		return ;
 
 	C main;
+	C pend;
 
+	// main to push back the vector<int>
+	// pend takes the other vector<int>
+	// main back references the last element added to main
 	for (size_t i = 0; i + 1 < container.size(); i += 2) {
-		main.push_back(container[i] > container [i + 1] ? container[i] : container [i + 1]);
-		main.back().push_back(main.back() == container[i] ? container[i + 1][0] : container [i][0]);
-		std::cout << main.back()[0] << " && " << main.back()[1] << std::endl;
+		main.push_back(FIRST > SECOND ? FIRST : SECOND); 
+		pend.push_back(main.back() == FIRST ? SECOND : FIRST); 
+		main.back().insert(main.back().begin() + 1, (main.back() == FIRST ? SECOND[0] : FIRST[0])); 
 	}
-	// todo: missing dangling elements
-	sort(main);
+	if (container.size() % 2 == 1)
+		pend.push_back(container.back());
+	// recurse(main);
+	insertPend(main, pend);
+	std::cout << main.size() << std::endl;
 	container = main;
 }
