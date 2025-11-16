@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 15:09:41 by weijian           #+#    #+#             */
-/*   Updated: 2025/11/16 11:19:06 by weijian          ###   ########.fr       */
+/*   Updated: 2025/11/16 17:06:18 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,9 @@ class PMergeMe
 
 		template <typename C>
 		static typename C::iterator	findNode(C& pend, int find);
+
+		template <typename C>
+		static typename C::iterator	insertLocation(C& main, int insertion);
 } ;
 
 /* print container */

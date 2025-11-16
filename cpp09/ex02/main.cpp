@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 15:27:11 by weijian           #+#    #+#             */
-/*   Updated: 2025/11/15 22:36:55 by weijian          ###   ########.fr       */
+/*   Updated: 2025/11/16 17:43:48 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,6 @@ int main (int ac, char **av)
 		std::cout << "Before: " << printSorted(v) << std::endl;
 		std::cout << "After : " << printSorted(m) << std::endl;
 		PMergeMe pm(v, d);
-		std::cout << "\n\n\n\n" ;
 		pm.printLists();
 	} catch (std::exception &err) {
 			std::cerr << err.what() << std::endl;

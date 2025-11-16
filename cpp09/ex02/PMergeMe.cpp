@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 15:29:01 by weijian           #+#    #+#             */
-/*   Updated: 2025/11/16 13:57:31 by weijian          ###   ########.fr       */
+/*   Updated: 2025/11/16 17:43:56 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ PMergeMe::PMergeMe(std::vector<int> v, std::deque<int> d)
 	:	_vec(sort(v)),
 		_deque()
 {
+	std::cout << "\n\n\n\n" ;
+	PRINT("vector size: " << _vec.size());
 	(void) d;
 }
 
@@ -69,7 +71,6 @@ template <typename C>
 typename C::iterator	PM::findNode(C& pend, int find)
 {
 	PRINT("\nFUNCTION CALL: find");
-	PRINT("pend: " << printContainer(pend));
 	std::cout << "find : " << find << std::endl;
 	for (typename C::iterator it = pend.begin(); it != pend.end(); it++) {
 		std::cout << (*it)[0] << std::endl;
@@ -83,20 +84,27 @@ typename C::iterator	PM::findNode(C& pend, int find)
 }
 
 template <typename C>
+typename C::iterator	PM::insertLocation(C& main, int insertion)
+{
+	for (typename C::iterator it = main.begin(); it != main.end(); it++) {
+		return(main.begin());
+		if (insertion > (*it)[0])
+			return (it - 1);
+	}
+	std::cout << "insert location: end returned" << std::endl;
+	return (main.end());
+}
+
+template <typename C>
 void	PM::insertPend(C& main, C& pend)
 {
-	PRINT("\nFUNCTION CALL: insertPend");
-	std::cout << "[main] " << printContainer(main) << std::endl;
-	std::cout << "[pend] " << printContainer(pend) << std::endl;
 	typename C::iterator	found; 
+
 	for (size_t i = 0; pend.size() > 0 && (i * 2) < main.size(); i++) {
-		std::cout	<< "i: " << i << "\t"
-					<< main[2 * i][1] << std::endl
-					<< "pend size: " << pend.size() << std::endl;
 		found = findNode(pend, main[2 * i][1]);
 		if (found != pend.end()) {
 			main[2 * i].erase(main[2 * i].begin() + 1);
-			main.insert(main.begin(), *found);
+			main.insert(insertLocation(main, (*found)[0]), *found);
 			pend.erase(found);
 		}
 	}
@@ -128,8 +136,7 @@ void	PM::recurse(C& container)
 	}
 	if (container.size() % 2 == 1)
 		pend.push_back(container.back());
-	// recurse(main);
+	recurse(main);
 	insertPend(main, pend);
-	std::cout << main.size() << std::endl;
 	container = main;
 }
