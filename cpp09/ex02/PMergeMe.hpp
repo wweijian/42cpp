@@ -70,7 +70,7 @@ std::string printContainer(C& container)
 
 	for (size_t i = 0; i < container.size(); i++) {
 		if (i != 0)
-			os << "\t";
+			os << " ";
 		os << container[i][0];
 	}
 	return (os.str());

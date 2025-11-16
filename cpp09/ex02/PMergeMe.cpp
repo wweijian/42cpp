@@ -86,16 +86,16 @@ template <typename C>
 void	PM::insertPend(C& main, C& pend)
 {
 	PRINT("\nFUNCTION CALL: insertPend");
-	// std::cout << "[main] " << printContainer(main) << std::endl;
-	// std::cout << "[pend] " << printContainer(pend) << std::endl;
+	std::cout << "[main] " << printContainer(main) << std::endl;
+	std::cout << "[pend] " << printContainer(pend) << std::endl;
 	typename C::iterator	found; 
-	for (size_t i = 0; pend.size() > 0; i++) {
-		std::cout	<< "i: " << i << "\t" 
+	for (size_t i = 0; pend.size() > 0 && (i * 2) < main.size(); i++) {
+		std::cout	<< "i: " << i << "\t"
 					<< main[2 * i][1] << std::endl
 					<< "pend size: " << pend.size() << std::endl;
 		found = findNode(pend, main[2 * i][1]);
 		if (found != pend.end()) {
-			main[2 + i].erase(main[2 + i].begin() + 1);
+			main[2 * i].erase(main[2 * i].begin() + 1);
 			main.insert(main.begin(), *found);
 			pend.erase(found);
 		}
