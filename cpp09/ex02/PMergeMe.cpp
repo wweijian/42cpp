@@ -6,7 +6,7 @@
 /*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 15:29:01 by weijian           #+#    #+#             */
-/*   Updated: 2025/11/16 17:43:56 by weijian          ###   ########.fr       */
+/*   Updated: 2025/11/16 21:47:15 by weijian          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,9 +87,8 @@ template <typename C>
 typename C::iterator	PM::insertLocation(C& main, int insertion)
 {
 	for (typename C::iterator it = main.begin(); it != main.end(); it++) {
-		return(main.begin());
-		if (insertion > (*it)[0])
-			return (it - 1);
+		if (insertion <= (*it)[0])
+			return (it);
 	}
 	std::cout << "insert location: end returned" << std::endl;
 	return (main.end());
