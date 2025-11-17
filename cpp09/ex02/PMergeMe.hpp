@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 15:09:41 by weijian           #+#    #+#             */
-/*   Updated: 2025/11/17 12:07:43 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/11/17 21:31:29 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,19 @@ std::string printContainer(C& container)
 	}
 	return (os.str());
 }
+
+/* enum */
+enum {
+	CURRENT,
+	LAST,
+	LASTLAST,
+	MAX
+} ;
+
+enum {
+	HEAD,
+	NOW
+} ;
 
 /*
 	./PMergeMe 134 150 281 5712 481 190 482 2149 1038 88199 77

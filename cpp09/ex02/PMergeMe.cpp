@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 15:29:01 by weijian           #+#    #+#             */
-/*   Updated: 2025/11/17 12:09:00 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/11/17 21:34:01 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,23 +83,38 @@ typename C::iterator	PM::findNode(C& pend, int find)
 	return (pend.end());
 }
 
+// lower_bound is binary sort
 template <typename C>
 void	PM::insertPend(C& main, C& pend)
 {
-	typename C::iterator	found; 
+	typename C::iterator	found;
+	int						j[4] = {0, 0, 0, static_cast<int>(main.size() - 1)}; // jacobsthal
+	int						main_idx[3] = {0, 0};
 
-	for (size_t i = 0; pend.size() > 0 && (i * 2) < main.size(); i++) {
-		found = findNode(pend, main[2 * i][1]);
-		if (found != pend.end()) {
-			main[2 * i].erase(main[2 * i].begin() + 1);
-			main.insert(std::lower_bound(main.begin(), main.begin() + i * 2, *found), *found);
-			pend.erase(found);
+	while(j[LAST] + main_idx[HEAD]< main_idx[MAX]) {
+		j[CURRENT] = j[CURRENT] > j[MAX] ? j[CURRENT] : j[MAX];
+		main_idx[CURRENT] = main_idx[HEAD] + j[CURRENT];
+		while(main_idx[NOW] > main_idx[HEAD] + j[LAST]) {
+			found = findNode(pend, main[main_idx[NOW]][1]);
+			main.insert(std::lower_bound(main.begin(), main.begin() + main_idx[NOW], *found), *found);
+			//remove from pend
+			main_idx[NOW]--;
 		}
+		if (j[CURRENT] == 0) {
+			j[CURRENT] = 1;
+		}
+		else {
+			j[LASTLAST] = j[LAST];
+			j[LAST] = j[CURRENT];
+			if (j[CURRENT == 1]) {
+				j[LASTLAST] = 1;
+				j[LAST] = 1;
+			}
+			j[CURRENT] = j[LAST] + 2 * j[LASTLAST];
+		}
+		main_idx[HEAD]++;
 	}
-	if (pend.size() == 1) {
-		main.insert(std::lower_bound(main.begin(), main.end(), pend[0]), pend[0]);
-		pend.erase(pend.begin());
-	}
+	//check if pend == 1
 }
 
 #define FIRST container[i]
