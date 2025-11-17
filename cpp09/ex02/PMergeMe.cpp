@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PMergeMe.cpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 15:29:01 by weijian           #+#    #+#             */
-/*   Updated: 2025/11/16 21:47:15 by weijian          ###   ########.fr       */
+/*   Updated: 2025/11/17 12:09:00 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,17 +84,6 @@ typename C::iterator	PM::findNode(C& pend, int find)
 }
 
 template <typename C>
-typename C::iterator	PM::insertLocation(C& main, int insertion)
-{
-	for (typename C::iterator it = main.begin(); it != main.end(); it++) {
-		if (insertion <= (*it)[0])
-			return (it);
-	}
-	std::cout << "insert location: end returned" << std::endl;
-	return (main.end());
-}
-
-template <typename C>
 void	PM::insertPend(C& main, C& pend)
 {
 	typename C::iterator	found; 
@@ -103,12 +92,12 @@ void	PM::insertPend(C& main, C& pend)
 		found = findNode(pend, main[2 * i][1]);
 		if (found != pend.end()) {
 			main[2 * i].erase(main[2 * i].begin() + 1);
-			main.insert(insertLocation(main, (*found)[0]), *found);
+			main.insert(std::lower_bound(main.begin(), main.begin() + i * 2, *found), *found);
 			pend.erase(found);
 		}
 	}
 	if (pend.size() == 1) {
-		main.insert(insertLocation(main,pend[0][0]), pend[0]);
+		main.insert(std::lower_bound(main.begin(), main.end(), pend[0]), pend[0]);
 		pend.erase(pend.begin());
 	}
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   PMergeMe.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 15:09:41 by weijian           #+#    #+#             */
-/*   Updated: 2025/11/16 17:06:18 by weijian          ###   ########.fr       */
+/*   Updated: 2025/11/17 12:07:43 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,6 @@ class PMergeMe
 
 		template <typename C>
 		static typename C::iterator	findNode(C& pend, int find);
-
-		template <typename C>
-		static typename C::iterator	insertLocation(C& main, int insertion);
 } ;
 
 /* print container */
