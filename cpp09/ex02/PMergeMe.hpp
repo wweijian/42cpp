@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 15:09:41 by weijian           #+#    #+#             */
-/*   Updated: 2025/11/17 21:31:29 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/11/18 22:18:39 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,40 +68,54 @@ std::string printContainer(C& container)
 {
 	std::stringstream os;
 
+	os << "\n";
 	for (size_t i = 0; i < container.size(); i++) {
-		if (i != 0)
-			os << " ";
-		os << container[i][0];
+		os << "vector " << i << ": ";
+		for (size_t j = 0; j < container[i].size(); j++) {
+			// if (j != 0)
+				os << " ";
+			os << container[i][j];
+		}
+		os << "\n";
 	}
 	return (os.str());
 }
 
-/* enum */
-enum {
-	CURRENT,
-	LAST,
-	LASTLAST,
-	MAX
-} ;
+/* structs */
+typedef struct s_jacobsthal {
+	int	current;
+	int	last;
+	int	lastlast;
+	int max;
+	void next()
+	{
+		if (current == 0) {
+			lastlast = 0;
+			last = 0;
+			current = 1;
+		}
+		else if (current == 1) {
+			lastlast = 1;
+			last = 1;
+			current = 3;
+		}
+		else {
+			lastlast = last;
+			last = current;
+			current = last + 2 * lastlast;
+		}
+	}
+}	t_jacobsthal;
 
-enum {
-	HEAD,
-	NOW
-} ;
-
-/*
-	./PMergeMe 134 150 281 5712 481 190 482 2149 1038 88199 77
-
-	134		150
-	5712	281
-	481		190
-	2149	482
-	88199	1038
-			77
-	
-	5712	134
-	2149	481
-			88199
-
-	5712	2149
-*/
+/* misc */
+template <typename C>
+void isSorted(C& container)
+{
+	for (size_t i = 1; i < container.size(); i++) {
+		if (container[i] < container[i - 1]) {
+			std::cout << "container not sorted" << std::endl;
+			return;
+		}
+	}
+	std::cout << "congratulation it's sorted" << std::endl;
+}
