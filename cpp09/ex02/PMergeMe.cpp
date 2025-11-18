@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 15:29:01 by weijian           #+#    #+#             */
-/*   Updated: 2025/11/18 22:24:42 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/11/18 22:35:31 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ PMergeMe::PMergeMe(std::vector<int> v, std::deque<int> d)
 {
 	std::cout << "\n\n\n\n" ;
 	PRINT("vector size: " << _vec.size());
-	// isSorted(_vec);
+	isSorted(_vec);
 	(void) d;
 }
 
@@ -88,16 +88,16 @@ typename C::iterator	PM::findNode(C& pend, int find)
 template <typename C>
 void	PM::insertPend(C& main, C& pend)
 {
-	t_jacobsthal			j = {0, -1, -1, static_cast<int>(main.size() - 1)};
+	t_jacobsthal			j = {0, -1, -1, static_cast<int>(pend.size() - 1)};
 	int						i = j.current;
 
+	PRINT("// insertpend //");
+	PRINT("before main" << printContainer(main));
 	for(size_t i = 0; i < main.size(); i++){
 		pend[i][0] = main[i][1];
+		main[i].erase(main[i].begin() + 1);
 	}
-	main.insert(main.begin(), pend[0]);
-	// if (pend.size() > 1)
-	// 	main.insert(std::lower_bound(main.begin(), main.begin() + 1, pend[1]), pend[1]);
-	while (j.last < static_cast<int>(pend.size())) {
+	while (j.last < j.max) {
 		i = j.current > j.max ? j.max : j.current;
 		while (i > j.last) {
 			main.insert(std::lower_bound(main.begin(), main.end(), pend[i]), pend[i]);
@@ -105,6 +105,7 @@ void	PM::insertPend(C& main, C& pend)
 		}
 		j.next();
 	}
+	PRINT("after main" << printContainer(main));
 }
 
 #define FIRST container[i]
