@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 15:09:41 by weijian           #+#    #+#             */
-/*   Updated: 2025/11/18 22:18:39 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/11/19 10:40:33 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 #include <deque>
 #include <set>
 #include <exception>
-#include <cctype>
 #include <ctime>
-#include <iomanip>
 
-#define	PRINT(os)	std::cout << os << std::endl;
-#define	TRY(fn)		try {fn;} catch (std::exception &e) {PRINT(e.what());}
-#define	TIME(fn)	clock_t start = clock(); fn; time = static_cast<double>(clock() - start) / CLOCKS_PER_SEC * 1000000;
+#define	PRINT(os)		std::cout << os << std::endl;
+#define	TRY(fn)			try {fn;} catch (std::exception &e) {PRINT(e.what());}
+#define TIME(container)		std::cout	<< "time to process a range of " << v.size() \
+<< " with " << container << " : " \
+<< static_cast<float>(clock() - start) / CLOCKS_PER_SEC * 1000000 << " us" << std::endl;
 
 class PMergeMe
 {
@@ -44,6 +44,7 @@ class PMergeMe
 	/* variables */
 		std::vector<int>	_vec;
 		std::deque<int>		_deque;
+		size_t				_size;
 
 	/* type redefinition */
 		typedef std::string::iterator	iterator;
@@ -86,7 +87,8 @@ typedef struct s_jacobsthal {
 	int	current;
 	int	last;
 	int	lastlast;
-	int max;
+	int	max;
+	
 	void next()
 	{
 		if (current == 0) {

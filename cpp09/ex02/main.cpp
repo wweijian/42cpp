@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 15:27:11 by weijian           #+#    #+#             */
-/*   Updated: 2025/11/18 22:11:26 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/11/19 10:37:50 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	getNumber(char *av)
 }
 
 template <typename C>
-std::string printSorted(C ms)
+std::string print(C ms)
 {
 	std::stringstream os;
 	
@@ -51,7 +51,7 @@ int main (int ac, char **av)
 	int						num;
 	std::vector<int>		v;
 	std::deque<int>			d;
-	std::multiset<int>					m;
+	std::multiset<int>		m;
 
 	try {
 		for (int i = 1; i < ac; i++) {
@@ -60,11 +60,10 @@ int main (int ac, char **av)
 			d.push_back(num);
 			m.insert(num);
 		}
-		std::cout << "Element Count: " << v.size() << std::endl;
-		std::cout << "Before: " << printSorted(v) << std::endl;
-		std::cout << "After : " << printSorted(m) << std::endl;
+		std::cout << "Before: " << print(v) << std::endl;
+		std::cout << "After : " << print(m) << std::endl;
 		PMergeMe pm(v, d);
-		pm.printLists();
+		// pm.printLists();
 	} catch (std::exception &err) {
 			std::cerr << err.what() << std::endl;
 	}

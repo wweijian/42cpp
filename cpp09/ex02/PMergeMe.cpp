@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 15:29:01 by weijian           #+#    #+#             */
-/*   Updated: 2025/11/18 22:35:31 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/11/19 10:20:20 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,18 @@ PMergeMe::PMergeMe()
 
 PMergeMe::PMergeMe(std::vector<int> v, std::deque<int> d)
 	:	_vec(sort(v)),
-		_deque()
+		_deque(sort(d)),
+		_size(v.size())
 {
-	std::cout << "\n\n\n\n" ;
-	PRINT("vector size: " << _vec.size());
-	isSorted(_vec);
-	(void) d;
+	clock_t start = clock();
+
+	_vec = sort(v);
+	TIME("std::vector");
+	start = clock();
+	_deque = sort(d);
+	TIME("std::deque")
+	// isSorted(_vec);
+	// isSorted(_deque);
 }
 
 PM::PM(const PM &other)
@@ -45,9 +51,15 @@ PM::~PM()
 
 void	PM::printLists()
 {
+	std::cout << "/// vector ///\n";
 	for (size_t i = 0; i < _vec.size(); i++) {
 		std::cout << _vec[i] << " ";
-	};
+	}
+	std::cout << std::endl;
+	std::cout << "/// deque ///\n";
+	for (size_t i = 0; i < _deque.size(); i++) {
+		std::cout << _deque[i] << " ";
+	}
 	std::cout << std::endl;
 }
 
@@ -57,8 +69,8 @@ Cont<int, std::allocator<int> > PM::sort(const Cont<int, std::allocator<int> >& 
 	typedef Cont<int, std::allocator<int> > Inner;
 	typedef Cont<Inner, std::allocator<Inner> > Outer;
 
-	Outer graph;
-	Inner dst;
+	Outer	graph;
+	Inner	dst;
 
 	for (size_t i = 0; i < src.size(); ++i)
 		graph.push_back(Inner(1, src[i]));
@@ -71,12 +83,8 @@ Cont<int, std::allocator<int> > PM::sort(const Cont<int, std::allocator<int> >& 
 template <typename C>
 typename C::iterator	PM::findNode(C& pend, int find)
 {
-	PRINT("FUNCTION CALL: find");
-	std::cout << "find : " << find << std::endl;
 	for (typename C::iterator it = pend.begin(); it != pend.end(); it++) {
-		PRINT((*it)[0]);
 		if ((*it)[0] == find) {
-			std::cout << "found!" << std::endl; 
 			return (it);
 		}
 	}
@@ -91,21 +99,22 @@ void	PM::insertPend(C& main, C& pend)
 	t_jacobsthal			j = {0, -1, -1, static_cast<int>(pend.size() - 1)};
 	int						i = j.current;
 
-	PRINT("// insertpend //");
-	PRINT("before main" << printContainer(main));
+	C pendCopy;
+
 	for(size_t i = 0; i < main.size(); i++){
-		pend[i][0] = main[i][1];
+		pendCopy.push_back(*findNode(pend, main[i][1]));
 		main[i].erase(main[i].begin() + 1);
 	}
+	if (pend.size() > main.size())
+		pendCopy.push_back(*(pend.end() - 1));
 	while (j.last < j.max) {
 		i = j.current > j.max ? j.max : j.current;
 		while (i > j.last) {
-			main.insert(std::lower_bound(main.begin(), main.end(), pend[i]), pend[i]);
+			main.insert(std::lower_bound(main.begin(), main.end(), pendCopy[i]), pendCopy[i]);
 			i--;
 		}
 		j.next();
 	}
-	PRINT("after main" << printContainer(main));
 }
 
 #define FIRST container[i]
