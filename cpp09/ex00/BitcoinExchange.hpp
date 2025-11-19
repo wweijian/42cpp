@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   BitcoinExchange.hpp                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: weijian <weijian@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 07:41:17 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/21 13:55:36 by weijian          ###   ########.fr       */
+/*   Updated: 2025/11/19 14:22:10 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 #include <map>
 
 #define	PRINT(os) std::cout << os << std::endl
-#define	TRY(name,fn) try {fn;} catch (std::exception &e) {PRINT(name << " : " << e.what());}
+#define	TRY(name,fn) try {fn;} catch (std::exception &e) {std::cerr << e.what() << std::endl;}
 #define	DATE_VALUE_FORMAT "date | value"
 
 class BitcoinExchange

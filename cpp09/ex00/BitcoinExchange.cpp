@@ -6,7 +6,7 @@
 /*   By: wjhoe <wjhoe@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/21 07:41:25 by weijian           #+#    #+#             */
-/*   Updated: 2025/09/29 20:18:37 by wjhoe            ###   ########.fr       */
+/*   Updated: 2025/11/19 14:26:18 by wjhoe            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,12 +42,17 @@ BitcoinExchange::~BitcoinExchange()
 /* functions */
 bool	BitcoinExchange::validDate(std::string line, int n)
 {
-	int		year(std::stoi(line));
-	int		month(std::stoi(line.substr(4)));
-	int		day(std::stoi(line.substr(8)));
-	bool	leap = (year % 4 == 0 && year % 400 != 0);
+	std::stringstream ss(line);
+	int		year;
+	int		month;
+	int		day;
+	bool	leap;
 	int		totalDays = 31;
 
+	ss >> year, ss.ignore(1);
+	ss >> month, ss.ignore(1);
+	ss >> day;
+	leap = (year % 4 == 0 && year % 400 != 0);
 	if (month > 12)
 		return false;
 	if (month == 4 || month == 6 || month == 9 || month == 11)
@@ -96,7 +101,10 @@ float	BitcoinExchange::getValue(std::string line, int n)
 			throw LineError("malformed exchange rate", n);
 	}
 	try {
-		return (std::stof(line));
+		float				f;
+		std::stringstream	ss(line);
+		ss >> f;
+		return (f);
 	} catch (std::exception &err) {
 		throw LineError("malformed exchange rate", n);
 	}
@@ -106,8 +114,8 @@ void	BitcoinExchange::loadExchangeRates()
 {
 	std::string		line;
 	std::string		key;
-	int				value;
-	std::ifstream	exchangeRates(_databaseName);
+	float				value;
+	std::ifstream	exchangeRates(_databaseName.c_str());
 
 	if (!exchangeRates.is_open())
 		throw CannotOpenDatabase();
@@ -136,9 +144,13 @@ void	BitcoinExchange::printConversions(std::string line, int n)
 	}
 	int value;
 	try {
-		value = std::stoi(line);
+		std::stringstream ss(line);
+		ss >> value;
+		if (value < 0 || value > 1000)
+			throw std::runtime_error("");
 	} catch (std::exception &err) {
-		throw LineError("value too large", n);
+		// throw LineError("value too large", n);
+		throw LineError("too large a number", n);
 	}
 	mapIt	it = _exchangeRates.lower_bound(date);
 	float	rate;
@@ -154,10 +166,10 @@ void	BitcoinExchange::printConversions(std::string line, int n)
 void	BitcoinExchange::evaluatePositions(std::string fileName)
 {
 	std::string		line;
-	std::ifstream	readFile(fileName);
+	std::ifstream	readFile(fileName.c_str());
 
 	if (!readFile)
-		throw std::invalid_argument(fileName + "cannot be opened");
+		throw std::invalid_argument(fileName + " cannot be opened");
 	std::getline(readFile, line);
 	if (line.compare(DATE_VALUE_FORMAT) != 0)
 		throw LineError(fileName + ": unknown header" , 1);
@@ -173,8 +185,12 @@ const char * BitcoinExchange::CannotOpenDatabase::what() const throw()
 }
 
 BitcoinExchange::LineError::LineError(std::string error, int line)
-		:	_errorMsg("[ERROR] line " + std::to_string(line) + " : " + error)
-{}
+{
+	std::stringstream ss;
+	
+	ss << "[ERROR] line " << line << " : " << error;
+	_errorMsg = ss.str();
+}
 
 BitcoinExchange::LineError::~LineError() throw ()
 {}
